@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------
+# UNREDACTED SOURCE MATERIAL — never commit
+# Anything matching these patterns may contain PHI. Once a file is
+# committed it stays in git history even after deletion.
+# ---------------------------------------------------------------
+ORIGINAL*
+original*
+*UNREDACTED*
+*unredacted*
+*DO-NOT-COMMIT*
+*-raw.*
+raw/
+private/
+
+# Patient portal downloads in their original formats
+*.rtfd/
+*.rtf
+*.pdf
+*.doc
+*.docx
+
+# Images — signature blocks, barcodes, logos pulled from records
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.heic
+
+# Audio and transcripts before de-identification
+*.m4a
+*.mp3
+*.wav
+*.mov
+
+# Archives (may bundle unredacted files)
+*.zip
+*.tar
+*.tar.gz
+
+# ---------------------------------------------------------------
+# Working files
+# ---------------------------------------------------------------
+scratch/
+tmp/
+*.tmp
+*.bak
+*~
+
+# ---------------------------------------------------------------
+# macOS
+# ---------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ---------------------------------------------------------------
+# Editors
+# ---------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---------------------------------------------------------------
+# Environment / secrets
+# ---------------------------------------------------------------
+.env
+.env.*
+*.key
+*.pem
