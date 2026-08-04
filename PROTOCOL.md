@@ -118,3 +118,24 @@ that would change its verdict.
   regional health system consolidation placed pre-June-2026
   hospital records behind a 30-business-day request.
 - Procedure class: inguinal hernia repair, post-operative.
+
+## Amendment — 2026-08-04
+
+- Scope limit. The corpus is n=1: two documents from a single
+  episode of care for a single patient, plus one public control
+  specimen. The taxonomy derived from it is a hypothesis, not a
+  general claim about discharge documentation.
+- Specimen review by a licensed pharmacist (retired), who is a
+  household member. Relationship disclosed. He remains blind to
+  the taxonomy, schema, and this file until his markup is
+  recorded and sealed.
+- Specimens were obtained from the patient portal with the
+  patient's consent. Both are outpatient documents from the
+  post-operative episode.
+- An exploratory interview was conducted 3 Aug. Background, not
+  evidence. See /background/.
+- Procedure class: inguinal hernia repair, post-operative.
+- Control specimen (AHRQ sample AHCP) added 4 Aug. Expected
+  output is "no primary defect identified." A known malformed
+  dose unit in the source is recorded in the specimen header
+  prior to any run.
