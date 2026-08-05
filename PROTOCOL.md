@@ -139,3 +139,52 @@ that would change its verdict.
   output is "no primary defect identified." A known malformed
   dose unit in the source is recorded in the specimen header
   prior to any run.
+## Amendment — 2026-08-04 (evening)
+
+- **Artifact class.** Specimen-01 is an after-visit summary generated
+  for a post-operative office visit, not a packet issued at the point
+  of hospital discharge. The scope in "Scope of the instrument" is
+  therefore read as: the patient-facing written instruction set issued
+  at a care transition and carried home. This covers discharge
+  packets, after-visit summaries, and their companion handouts. The
+  widening is recorded here rather than applied silently, and was
+  made after specimen acquisition revealed the failure mechanism to
+  be a property of the artifact *set* rather than of a single
+  document.
+- **Portal inventory.** Specimen-02 is the only instruction document
+  filed under the surgical encounter in the patient portal. The
+  absence of post-operative instruction is documented at source, not
+  inferred solely from the empty educational-handouts field in
+  specimen-01.
+- **Bound on that claim.** Portal inventory records what was *filed*.
+  Paper materials handed over at discharge and never entered into the
+  record would not appear. The specimen set is what is retrievable
+  from the record and is not asserted to be the complete set of what
+  was physically given to the patient.
+- **Specimen-02 licensing.** Specimen-02 is third-party licensed
+  patient-education content (© Ignite Healthwise, LLC; adapted under
+  license by the health system). It is reproduced unaltered as a
+  research specimen, with attribution recorded in
+  `specimens/specimen-02-SOURCE.md`. It is not authored by the
+  builder and all rights remain with the copyright holder. It is
+  preserved in its retrieved HTML form, markup included, so that
+  quoted anchors can be verified against the source.
+- **Builder blinding — disclosure.** The builder produced a
+  structured defect analysis of specimens 01 and 02 (recorded in
+  `07-defect-record-specimens-01-02.md`) in conversation with an
+  assistant, prior to writing an independent answer key. The
+  builder's own key is therefore not blind, and this cannot be
+  corrected after the fact. The independent key for this specimen set
+  is the PRACTITIONER-rung session, conducted with a clinician who
+  receives the specimens without the taxonomy, the schema, or any
+  statement of the hypothesis, and whose unprompted account is
+  recorded before any specific question is asked.
+- **PRACTITIONER rung status.** Pending as of this amendment. If no
+  session is obtained, the rung ships empty and named as empty, per
+  the Inputs section above.
+- **Ranking authority.** `06-defect-priority-hierarchy.md` was
+  written and committed before its application to any specimen. It
+  removes primary-defect selection from the model: the model labels
+  anchored candidates, the hierarchy and its tiebreak rules select
+  the primary, and an unresolved tie returns `TIE_UNRESOLVED` rather
+  than a choice.
