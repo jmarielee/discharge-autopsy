@@ -290,3 +290,17 @@ that would change its verdict.
   fields as `FIELD_INCOMPLETENESS` has produced a false positive of
   the kind named in the Stated assumption above. Procedure class is
   widened to unspecified inpatient discharge for this specimen only.
+
+## Amendment — 2026-08-06 (evening)
+
+- **Second run pre-registered.** Specimen-05 is the same source document as
+  specimen-04, re-extracted with a corrected converter. The specimen-04 run
+  stands as the first and binding run; nothing from it is discarded or
+  superseded. Specimen-05 exists because the specimen-04 extraction was
+  defective in a way that made its anchors unverifiable — see OD-8 — not
+  because its result was unwelcome.
+- **What the second run tests.** Whether the `OUT_OF_SCOPE` result was a
+  property of the document or an artifact of a corrupted reading of it. A
+  differing result is the more interesting outcome and is recorded as such.
+- **Result is binding**, on the same terms as the 2026-08-07 entry. First run
+  on specimen-05 is the shipped run.
