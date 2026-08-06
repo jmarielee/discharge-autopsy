@@ -1,0 +1,32 @@
+RESULT             OUT_OF_SCOPE
+REQUEST TYPE       Specimen out of class — unissued blank template, not an
+                   encounter artifact set.
+WHY                The artifact class is the written material a patient is holding
+                   after an encounter. This specimen carries no encounter.
+                   Anchor, front matter: "Talk with the hospital staff about each
+                   of the items that are listed in the guide." The document names
+                   itself as an instrument completed during an encounter, not one
+                   generated at its conclusion. Every content field is unpopulated:
+                   no name, no medical problem, no medicine name, no dose, no
+                   appointment, no phone number.
+                   Four of six taxonomy classes cannot be evaluated against it.
+                   P1 requires two instructions sharing an observable token — the
+                   set contains no instructions. P2 requires a conditional
+                   instruction to act; the only conditionals are unfilled stems
+                   ("If I need medicine for a headache") with empty amount and
+                   route cells. P3 requires a documented clinical state to conflict
+                   with a handout's scope — no state is recorded anywhere. P4
+                   requires a structured field asserting absence alongside a
+                   narrative asserting presence — there is no narrative.
+                   The two classes that remain mechanically evaluable, P5 and P6,
+                   would fire on every ruled line in the document, including
+                   "If I have a serious health problem, I should call:" and its
+                   unfilled "Phone number:". That firing would register the
+                   specimen's pre-issuance state, not a property a reader
+                   encounters. A blank the form supplies for completion is not the
+                   same object as a required field empty at issue, and the
+                   detection signature cannot separate them.
+                   Even admitted on the permissive reading, the threshold in
+                   rules.md §4 refuses: dozens of anchored candidates, none at P3
+                   or higher.
+RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
