@@ -1,0 +1,108 @@
+{
+  "specimen_set": [
+    "specimens/specimen-01-post-op-visit-summary.md",
+    "specimens/specimen-02-inguinal-hernia-care-instructions.html"
+  ],
+  "candidates": [
+    {
+      "class": "ACTION_DIVERGENCE",
+      "locus": "internal_consistency",
+      "position": 1,
+      "emergency_adjacent": true,
+      "anchors": [
+        {
+          "file": "specimens/specimen-01-post-op-visit-summary.md",
+          "text": "counseled regarding seroma formation, recommended warm compresses/heating pad"
+        },
+        {
+          "file": "specimens/specimen-02-inguinal-hernia-care-instructions.html",
+          "text": "The area over the hernia turns red or becomes tender."
+        }
+      ],
+      "chain": "Two documents in the set assign opposite required actions to the same observable finding. specimen-01 frames a tender groin swelling as expected and directs heat and compression for up to ninety days. specimen-02 directs the reader to seek immediate care for the same observation. No discriminating criterion appears anywhere in the set; fever appears in neither document."
+    },
+    {
+      "class": "THRESHOLD_ABSENCE",
+      "locus": "observability",
+      "position": 2,
+      "anchors": [
+        {
+          "file": "specimens/specimen-01-post-op-visit-summary.md",
+          "text": "okay to return to activity & guide themselves based on pain"
+        }
+      ],
+      "chain": "An instruction to resume activity conditioned on a criterion the set never bounds. No lifting limit, duration, activity class, or restriction end date appears in either document."
+    },
+    {
+      "class": "STATE_MISMATCH",
+      "locus": "completeness",
+      "position": 3,
+      "anchors": [
+        {
+          "file": "specimens/specimen-02-inguinal-hernia-care-instructions.html",
+          "text": "If your hernia does not bother you, you most likely can wait to have surgery."
+        },
+        {
+          "file": "specimens/specimen-02-inguinal-hernia-care-instructions.html",
+          "text": "You cannot push the hernia back into place with gentle pressure when you are lying down."
+        }
+      ],
+      "chain": "The handout is scoped to an unrepaired hernia and was issued after a completed mesh repair. One instruction is not merely inapplicable but unexecutable: after a mesh repair there is nothing to reduce, and the document does not say so."
+    },
+    {
+      "class": "STRUCTURED_NARRATIVE_CONTRADICTION",
+      "locus": "internal_consistency",
+      "position": 4,
+      "anchors": [
+        {
+          "file": "specimens/specimen-01-post-op-visit-summary.md",
+          "text": "follow up at 1 year post op"
+        },
+        {
+          "file": "specimens/specimen-01-post-op-visit-summary.md",
+          "text": "Appointments | None recorded."
+        }
+      ],
+      "chain": "The narrative directs follow-up at one year while the structured Plan of Care table records no appointment."
+    },
+    {
+      "class": "FIELD_INCOMPLETENESS",
+      "locus": "completeness",
+      "position": 5,
+      "anchors": [
+        {
+          "file": "specimens/specimen-01-post-op-visit-summary.md",
+          "text": "Patient educational handouts: No information available."
+        }
+      ],
+      "chain": "A required field is present and empty. No post-operative handout was attached to the encounter."
+    }
+  ],
+  "ruled_out": [
+    {
+      "class": "STATE_MISMATCH",
+      "why": "Anchored and present, but ranks below P1 by the ordering principle. The scope error explains why the wrong handout is in the set; the reader acts on the divergence, not on the scope."
+    },
+    {
+      "class": "STRUCTURED_NARRATIVE_CONTRADICTION",
+      "why": "Anchored at the follow-up interval, but a reader's error on a follow-up date is recoverable, while an error on an observable finding may not be."
+    }
+  ],
+  "filed_as_symptom": [
+    {
+      "class": "THRESHOLD_ABSENCE",
+      "reason": "Outranked by P1."
+    },
+    {
+      "class": "FIELD_INCOMPLETENESS",
+      "reason": "Tier P6, and it is the mechanism by which the wrong handout entered the set rather than a defect the reader encounters."
+    }
+  ],
+  "would_flip_this": "A discriminating criterion anywhere in the artifact set \u2014 a size, a duration, a temperature, a described change in character \u2014 that separates the expected seroma from the emergent finding. If such a span exists in either document and was missed, this verdict fails.",
+  "resolution_path": "Bring this document to the discharging clinician or a pharmacist.",
+  "claimed_tier": "P3",
+  "_expect": {
+    "blocked_by": "G8"
+  },
+  "_note": "The report asserts a tier the ranking does not produce."
+}

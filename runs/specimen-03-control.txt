@@ -1,0 +1,28 @@
+======================================================================
+DISCHARGE AUTOPSY — deterministic layer
+specimen set: specimens/specimen-03-ahrq-sample-ahcp-CONTROL.md
+======================================================================
+
+RESULT             REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE
+WHY REFUSED        anchored defects: 1 (need >= 2) — FAIL
+                   tier P3 or higher present — FAIL
+
+ANCHORED           1
+  P6  FIELD_INCOMPLETENESS
+
+GATES
+  G1  PASS  all anchors verbatim
+  G2  PASS  locus in schema
+  G3  PASS  no primary claimed (REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE)
+  G4  PASS  named result REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE
+  G5  PASS  no fix proposed
+  G6  PASS  resolution path exact
+  G7  PASS  not applicable to a non-verdict result
+  G8  PASS  no tier claimed
+  G9  PASS  no clinical judgment asserted
+  G10  PASS  falsifier stated
+
+RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
+
+----------------------------------------------------------------------
+VERIFIED

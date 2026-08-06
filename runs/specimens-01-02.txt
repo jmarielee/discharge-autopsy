@@ -1,0 +1,32 @@
+======================================================================
+DISCHARGE AUTOPSY — deterministic layer
+specimen set: specimens/specimen-01-post-op-visit-summary.md, specimens/specimen-02-inguinal-hernia-care-instructions.html
+======================================================================
+
+PRIMARY DEFECT     ACTION_DIVERGENCE
+TIER               P1  (computed, not claimed)
+LOCUS              internal_consistency
+
+ANCHORED           5
+  P1  ACTION_DIVERGENCE <-- primary
+  P2  THRESHOLD_ABSENCE
+  P3  STATE_MISMATCH
+  P4  STRUCTURED_NARRATIVE_CONTRADICTION
+  P6  FIELD_INCOMPLETENESS
+
+GATES
+  G1  PASS  all anchors verbatim
+  G2  PASS  locus in schema
+  G3  PASS  one primary defect, computed
+  G4  PASS  class ACTION_DIVERGENCE in taxonomy
+  G5  PASS  no fix proposed
+  G6  PASS  resolution path exact
+  G7  PASS  2 alternative(s) ruled out with reasons
+  G8  PASS  tier P1 computed
+  G9  PASS  no clinical judgment asserted
+  G10  PASS  falsifier stated
+
+RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
+
+----------------------------------------------------------------------
+VERIFIED

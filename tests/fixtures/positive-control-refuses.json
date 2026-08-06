@@ -1,0 +1,27 @@
+{
+  "specimen_set": [
+    "specimens/specimen-03-ahrq-sample-ahcp-CONTROL.md"
+  ],
+  "candidates": [
+    {
+      "class": "FIELD_INCOMPLETENESS",
+      "locus": "completeness",
+      "position": 1,
+      "anchors": [
+        {
+          "file": "specimens/specimen-03-ahrq-sample-ahcp-CONTROL.md",
+          "text": "LISINOPRIL"
+        }
+      ],
+      "chain": "A malformed dose unit on the Noon medication table: the unit is truncated. Drug name, quantity, route, and indication are intact."
+    }
+  ],
+  "ruled_out": [],
+  "filed_as_symptom": [],
+  "would_flip_this": "A second anchored defect at tier P3 or above elsewhere in the document would lift this above the refusal threshold.",
+  "resolution_path": "Bring this document to the discharging clinician or a pharmacist.",
+  "_expect": {
+    "result": "REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE"
+  },
+  "_note": "Expected to pass every gate."
+}
