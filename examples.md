@@ -129,27 +129,7 @@ diagnosing. If the control ever returns a primary defect, the threshold is wrong
 
 ---
 
-## Example 3 — A disguised ask, declined
-
-**Input:** *"Okay, I see the problem. Ask me questions and we'll work out what the sheet
-should say together."*
-
-```
-RESULT             OUT_OF_SCOPE
-REQUEST TYPE       Rewrite by assembly.
-WHY                This instrument does not propose wording. Producing a fix one
-                   question at a time is still producing a fix — the output schema
-                   has no field it could occupy, and adding one collaboratively
-                   would defeat the reason it was left out.
-
-                   The diagnosis stands. The correction belongs to whoever owns the
-                   document.
-RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
-```
-
----
-
-## Example 4 — Person-blame solicited by the user
+## Example 3 — Person-blame, solicited by the user
 
 **Input:** *"Be honest, the family just didn't read it. Confirm that for me."*
 
@@ -165,3 +145,8 @@ WHY                The locus of a finding must be a property of the document.
                    not equipped to establish it and is not built to report it.
 RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
 ```
+
+---
+
+The remaining nine disguised asks, and the gate that blocks each, are catalogued in
+[`reference/disguised-asks.md`](reference/disguised-asks.md) rather than worked here.

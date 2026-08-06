@@ -1,59 +1,49 @@
 # Discharge Autopsy
 
-A diagnostic instrument. It reads the papers a patient actually left the hospital with and
-names the single **document defect** most likely to cause a caregiver to fail at home.
+One sheet says the tender bulge is expected — treat it with heat and compression, up to
+ninety days. The other says seek care immediately if that area turns tender. Both went
+home in the same envelope. Nothing in either one tells a caregiver which is which.
 
-It cannot name a person as the cause. Not by policy — by schema. There is no field in the
-output where "non-compliant patient" could be written, and the ranking that selects the
-primary defect contains no class a person could satisfy.
+**Discharge Autopsy reads the papers a patient left the hospital with and names the
+document defect most likely to have caused a caregiver to fail at home.**
 
----
+Not how to fix it. Why it failed.
 
-## To run it
+It cannot name a person as the cause — not by policy, by schema. There is no field in the
+output where "non-compliant patient" could be written, and the ranking that picks the
+primary defect contains no class a person could satisfy. A model asked to avoid blaming
+people can be argued into it. A ranking with no person-shaped class in it cannot.
 
-Drop this folder into a Claude Project. Add one artifact set — the full set of documents
-from a single encounter — and ask for a diagnosis.
+## Run it
 
----
+Add this repo to a Claude Project and paste in the full set of instruction documents from
+one encounter. Three specimens ship in `specimens/`, including a control that is supposed
+to return a refusal.
 
-## Files
+## The design decision
 
-| File | What it is |
-|---|---|
-| `identity.md` | What the instrument is, its scope, and what it refuses |
-| `rules.md` | Operating rules, each mapped to the gate that enforces it |
-| `examples.md` | A worked verdict, a worked refusal, and two declined disguised asks |
-| `reference/taxonomy.md` | The closed defect taxonomy and the deterministic ranking |
-| `reference/verdict-schema.md` | The four possible output structures |
-| `reference/disguised-asks.md` | The disguise catalogue and the verifier gate table |
-
----
-
-## The design decision that matters
-
-The model labels. The ranking decides.
-
-The model identifies candidate defects and anchors each to a verbatim span. It does not
-choose which defect is primary, does not assign confidence, and does not rank. A
-deterministic tier table does that, and a judge can hand-check its output against the
+**The model labels. The ranking decides.** The model finds candidate defects and anchors
+each to a verbatim span. It does not rank, does not pick the primary, does not choose a
+confidence level. A six-tier table does that, and you can hand-check it against the
 specimen without running anything.
 
-This split is the reason the locus rule cannot be talked around. A model asked to avoid
-blaming people can be argued into it. A ranking with no person-shaped class in it cannot.
+## Start here
 
----
+- [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, committed 2026-08-01 before any specimen was collected
+- [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
+- [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
+- [`reference/taxonomy.md`](reference/taxonomy.md) — the tier table and its ordering principle
+- [`reference/disguised-asks.md`](reference/disguised-asks.md) — the gate table, and what the gates structurally cannot catch
 
-## It refuses
+Limits are stated rather than patched. No independent answer key exists for the shipped
+specimens yet; the record says so. Five document properties have no matching defect class,
+so defects there are invisible; the taxonomy says so. One class of smuggled fix passes
+every gate; the gate table says so.
 
-The control specimen — the AHRQ sample *After Hospital Care Plan* — returns a refusal, not
-a defect. A tool forbidden from blaming a person will invent a document defect to satisfy
-its own constraint unless it is built to stop. The refusal threshold is what stops it, and
-the control is the proof.
+```
+identity.md  rules.md  examples.md  reference/   ← the diagnostician
+PROTOCOL.md  specimens/  evidence/  background/  ← the evidence
+docs/                                            ← build documents
+```
 
----
-
-## Its limits are published
-
-`OPEN-DEFECTS.md` names limitations the verifier structurally cannot catch, including one
-class of smuggled fix that passes every gate. They are stated rather than patched, because
-patching a detector against one observed miss teaches the example instead of the principle.
+*Built by [Jodi Paige-Lee](https://www.linkedin.com/in/jodipl) for Clief Notes Weekly Competition #10.*
