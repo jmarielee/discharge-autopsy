@@ -276,3 +276,17 @@ that would change its verdict.
   returns, including a refusal or a class the builder disagrees with.
   Per the Stated assumption above, an unwanted result is logged, not
   re-rolled.
+- **PUBLIC-rung specimen withdrawn before use.** The MedlinePlus pages
+  named above were not used and no run was performed on them. Their
+  content is licensed from A.D.A.M./Ebix, not public domain, and the
+  license bars reproduction and use in evaluating AI systems. The
+  cholecystectomy class widening is void.
+
+- **PUBLIC-rung specimen admitted.** Specimen-04 is "Taking Care of
+  Myself: A Guide for When I Leave the Hospital," AHRQ Publication
+  No. 10-0059, a U.S. Government work in the public domain. It is a
+  fillable discharge template rather than a completed instruction set,
+  and is admitted knowing that: an instrument that flags its blank
+  fields as `FIELD_INCOMPLETENESS` has produced a false positive of
+  the kind named in the Stated assumption above. Procedure class is
+  widened to unspecified inpatient discharge for this specimen only.
