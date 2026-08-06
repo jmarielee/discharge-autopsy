@@ -188,3 +188,76 @@ that would change its verdict.
   anchored candidates, the hierarchy and its tiebreak rules select
   the primary, and an unresolved tie returns `TIE_UNRESOLVED` rather
   than a choice.
+
+## Amendment — 2026-08-06
+
+- **Correction to the timestamp claim above.** The section "Written
+  2026-08-01" states that this file's commit timestamp is the evidence
+  that the method was not shaped after the results. That is stronger
+  than the repository supports, and the original sentence is left
+  unedited above rather than quietly corrected. What the history
+  actually shows: this file is commit `71f473d`, the first commit in
+  the repository, dated 2026-08-03 15:35:50 UTC. The specimens commit
+  `25f5bc5` carries the same timestamp to the second — both were
+  pushed together. The history therefore establishes commit ordering
+  within this repository and nothing more. It does not establish a
+  gap, and it does not independently corroborate the 2026-08-01
+  writing date, which rests on the author's word. The defensible
+  claim is the narrow one: the protocol is the repository's first
+  commit, and no specimen appears before it.
+
+- **No diagnostician run exists.** The JSON files in `runs/` carry
+  builder-authored labels transcribed from `evidence/07`, which states
+  on its own face that it was produced before any diagnostician run.
+  `runs/README.md` described them as model-produced; that description
+  was wrong and is corrected as of this date. The end-to-end path from
+  specimen to model-generated labels was never exercised. Recorded in
+  `OPEN-DEFECTS.md` as OD-5, including why running it now against
+  specimens 01 and 02 would be an open-book test: `examples.md`
+  contains a worked diagnosis of those specimens by name.
+
+- **Runtime fields.** The `Runtime` section above was committed with
+  `[model]` and `[interface]` unfilled and is not edited. They remain
+  unfilled because no diagnostician run was performed. No model or
+  interface is recorded because none was used to produce the shipped
+  labels.
+
+- **Pharmacist markup attempted, not obtained.** The 2026-08-03 and
+  2026-08-04 amendments pre-registered a sealed specimen markup by a
+  licensed pharmacist (retired), a household member. A session was
+  conducted 2026-08-04 with both specimens in hand and the blind ask
+  stated unchanged. It did not produce a markup against the artifact,
+  and no finding in this repository is drawn from it. The session
+  transcript is withheld: it is not de-identified and the subject is
+  a household member. Recorded here so the rung's status is not
+  inferred from silence — no result was obtained, and none was
+  withheld for being unwelcome.
+
+- **PRACTITIONER rung filled by a different clinician.** The rung was
+  filled on 2026-08-06 by a registered nurse, not by the
+  pre-registered pharmacist. Full session record in
+  `evidence/08-practitioner-session.md`.
+
+- **Relationship disclosed.** The practitioner is a relative by
+  marriage of the builder (the builder's sister-in-law's niece),
+  outside the builder's household, with infrequent contact, contacted
+  for this project specifically. She is not an independent recruit;
+  she is a convenience sample obtained through a family network, and
+  is recorded as such.
+
+- **Scope narrowed after specimens were read.** The 2026-08-04
+  (evening) amendment read the scope as covering discharge packets,
+  after-visit summaries, and companion handouts. As of commit
+  `40bd876` the instrument excludes the hospital discharge packet and
+  addresses post-visit instruction sets only. This narrowing was made
+  after the specimens were read and after the practitioner session,
+  and is recorded here rather than applied silently.
+
+- **`OPEN-DEFECTS.md` created.** The "Contamination rule" and "Stated
+  assumption" sections above reference this file. It did not exist
+  until this date. It now exists and is populated with the defects
+  known at submission.
+
+- No rule, threshold, taxonomy class, gate, or tie-break was altered
+  in response to the practitioner session.
+

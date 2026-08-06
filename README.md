@@ -44,40 +44,46 @@ fixture**, so no gate ships unverified.
 
 ## Run it
 
-Add this repo to a Claude Project and paste in the full set of instruction documents from
-one encounter. Three specimens ship in `specimens/`, including the control.
+Add `identity.md`, `rules.md`, `examples.md`, and `reference/` to a Claude Project and
+paste in the full set of instruction documents from one encounter.
+
+Add only those files. `evidence/` and `runs/` contain worked diagnoses of the shipped
+specimens, and loading them turns a run into an open-book test.
 
 ## The design decision
 
-**The model labels. The ranking decides.** The model finds candidate defects and anchors
-each to a verbatim span. It does not rank, does not pick the primary, does not choose a
-confidence level — a report that tries is rejected by gate G3. The ranking lives in
-[`verify.py`](verify.py): it checks every anchor against its source, drops any defect
+**By design: the model labels, the ranking decides.** The model finds candidate defects
+and anchors each to a verbatim span. It does not rank, does not pick the primary, does not
+choose a confidence level — a report that tries is rejected by gate G3. The ranking lives
+in [`verify.py`](verify.py): it checks every anchor against its source, drops any defect
 whose anchor fails, applies the tier order and tie-breaks, and computes the primary.
 
-Run against the real artifact set it returns `ACTION_DIVERGENCE` at P1, independently
-reproducing the hand-ranking in [`evidence/07`](evidence/07-defect-record-specimens-01-02.md).
+The labels in `runs/` are builder-authored rather than model-generated, and that limit is
+recorded in [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) as OD-5. What `runs/` shows is the
+deciding layer working: given labels it did not write, `verify.py` verifies every anchor
+and computes `ACTION_DIVERGENCE` at P1 without being told.
 
 ## Start here
 
-- [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, committed 2026-08-01 before any specimen was collected
+- [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, written 2026-08-01 and committed 2026-08-03 as the repository's first commit, before any specimen was committed
+- [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what is known to be wrong with this repository at submission, including the one that matters most
 - [`evidence/08-practitioner-session.md`](evidence/08-practitioner-session.md) — a blind practitioner read: what it confirmed, what it could not test, and the coverage gap it walked into
-- [`runs/`](runs/) — both runs, input and output, reproducible offline
+- [`runs/`](runs/) — the deterministic layer on two specimen sets, reproducible offline; labels are builder-authored, see OD-5
 - [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
 - [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
 - [`reference/taxonomy.md`](reference/taxonomy.md) — the tier table and its ordering principle
 - [`reference/disguised-asks.md`](reference/disguised-asks.md) — the gate table, and what the gates structurally cannot catch
 
-Limits are stated rather than patched. No independent answer key exists for the shipped
-specimens yet; the record says so. Five document properties have no matching defect class,
-so defects there are invisible; the taxonomy says so. One class of smuggled fix passes
-every gate; the gate table says so.
+Limits are stated rather than patched. No end-to-end diagnostician run exists; OD-5 says
+so. No independent answer key exists for the shipped specimens; the record says so. Five
+document properties have no matching defect class, so defects there are invisible; the
+taxonomy says so. One class of smuggled fix passes every gate; the gate table says so.
 
 ```
 identity.md  rules.md  examples.md  reference/   ← the diagnostician
 verify.py    runs/     tests/                    ← the deterministic layer
 PROTOCOL.md  specimens/  evidence/  background/  ← the evidence
-docs/                                            ← build documents
+OPEN-DEFECTS.md  docs/                           ← what is wrong, and build documents
 ```
 
 *Built by [Jodi Paige-Lee](https://www.linkedin.com/in/jodipl) for Clief Notes Weekly Competition #10.*
