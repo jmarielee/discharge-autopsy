@@ -14,22 +14,45 @@ output where "non-compliant patient" could be written, and the ranking that pick
 primary defect contains no class a person could satisfy. A model asked to avoid blaming
 people can be argued into it. A ranking with no person-shaped class in it cannot.
 
+## Verify it in ninety seconds
+
+Python standard library only. No key, no install, no network.
+
+```
+python3 verify.py --test                        # ten gates, ten negative fixtures
+python3 verify.py runs/specimen-03-control.json # the control refuses
+python3 verify.py runs/specimens-01-02.json     # the real set: ACTION_DIVERGENCE, P1
+```
+
+**Read the control first.** It carries one known low-tier defect, recorded in the specimen
+header before any run. The instrument refuses rather than advancing it. A diagnostician
+forbidden from blaming a person will invent a document defect to satisfy its own
+constraint unless something stops it; the refusal threshold is that something. If the
+control ever returns a primary defect, the threshold is set wrong.
+
+`--test` runs every fixture and then asserts that **every gate has at least one negative
+fixture**, so no gate ships unverified.
+
 ## Run it
 
 Add this repo to a Claude Project and paste in the full set of instruction documents from
-one encounter. Three specimens ship in `specimens/`, including a control that is supposed
-to return a refusal.
+one encounter. Three specimens ship in `specimens/`, including the control.
 
 ## The design decision
 
 **The model labels. The ranking decides.** The model finds candidate defects and anchors
 each to a verbatim span. It does not rank, does not pick the primary, does not choose a
-confidence level. A six-tier table does that, and you can hand-check it against the
-specimen without running anything.
+confidence level — a report that tries is rejected by gate G3. The ranking lives in
+[`verify.py`](verify.py): it checks every anchor against its source, drops any defect
+whose anchor fails, applies the tier order and tie-breaks, and computes the primary.
+
+Run against the real artifact set it returns `ACTION_DIVERGENCE` at P1, independently
+reproducing the hand-ranking in [`evidence/07`](evidence/07-defect-record-specimens-01-02.md).
 
 ## Start here
 
 - [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, committed 2026-08-01 before any specimen was collected
+- [`runs/`](runs/) — both runs, input and output, reproducible offline
 - [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
 - [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
 - [`reference/taxonomy.md`](reference/taxonomy.md) — the tier table and its ordering principle
@@ -42,6 +65,7 @@ every gate; the gate table says so.
 
 ```
 identity.md  rules.md  examples.md  reference/   ← the diagnostician
+verify.py    runs/     tests/                    ← the deterministic layer
 PROTOCOL.md  specimens/  evidence/  background/  ← the evidence
 docs/                                            ← build documents
 ```
