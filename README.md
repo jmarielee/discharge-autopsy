@@ -1,13 +1,22 @@
-# Discharge Autopsy
+# Instruction Set Autopsy
 
 One sheet says the tender bulge is expected — treat it with heat and compression, up to
 ninety days. The other says seek care immediately if that area turns tender. Both went
 home in the same envelope. Nothing in either one tells a caregiver which is which.
 
-**Discharge Autopsy reads the papers a patient left the hospital with and names the
-document defect most likely to have caused a caregiver to fail at home.**
+**Instruction Set Autopsy reads the instructions a patient is still holding weeks after a
+procedure — the paperwork from follow-up visits, not the packet from the hospital — and
+names the document defect most likely to cause a caregiver to fail with them.**
 
 Not how to fix it. Why it failed.
+
+Not the hospital discharge packet — that one is comprehensive, signed, and driven by
+liability. This reads what comes after it and often replaces it in the house: the
+post-visit summary, the handout stapled on, whatever is on the counter three weeks later.
+A registered nurse who read a specimen blind supplied the mechanism herself: the summary
+is thin *because* the surgeon covered everything in person. Nothing was neglected. But the
+conversation ends at the office door, and the paper is what the caregiver still has at
+11pm.
 
 It cannot name a person as the cause — not by policy, by schema. There is no field in the
 output where "non-compliant patient" could be written, and the ranking that picks the
@@ -52,6 +61,7 @@ reproducing the hand-ranking in [`evidence/07`](evidence/07-defect-record-specim
 ## Start here
 
 - [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, committed 2026-08-01 before any specimen was collected
+- [`evidence/08-practitioner-session.md`](evidence/08-practitioner-session.md) — a blind practitioner read: what it confirmed, what it could not test, and the coverage gap it walked into
 - [`runs/`](runs/) — both runs, input and output, reproducible offline
 - [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
 - [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
