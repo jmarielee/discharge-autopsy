@@ -1,0 +1,79 @@
+PRIMARY DEFECT     THRESHOLD_ABSENCE
+TIER               P2
+LOCUS              observability
+
+ANCHORS            specimen-01, Assessment and Plan:
+                   "okay to return to activity & guide themselves based on pain"
+
+                   specimen-01, Assessment and Plan:
+                   "motrin or tylenol if needed for pain control, no narcotics
+                   necessary"
+
+CHAIN              Two instructions to act are each conditioned on a criterion the
+                   artifact set never quantifies.
+
+                   The first makes pain the governing bound on activity. No lifting
+                   limit, no weight, no duration, no activity class, and no
+                   restriction end date appears anywhere in the document. The
+                   reader is directed to a self-administered test and given no
+                   scale on which to read its result.
+
+                   The second conditions analgesic use on "if needed" and states
+                   two agents with no amount, no interval, and no daily maximum.
+                   The Current Medications table carries columns for Name,
+                   Prescribed Date, and Start Date; no dose, route, or frequency
+                   column exists in the document, so the amount is not recoverable
+                   from elsewhere in the set.
+
+                   Both bounds are absent in the same direction. A caregiver
+                   reading this at home, without the encounter, has two instructions
+                   to act and no stated point at which either instruction stops.
+
+RULED OUT          ACTION_DIVERGENCE (P1). Not present in this set. The seroma
+                   counsel — "counseled regarding seroma formation, recommended
+                   warm compresses/heating pad & compression, may take up to 90 days
+                   to resolve" — assigns one action to one observable finding, and
+                   no second instruction in this document assigns an opposing action
+                   to the same finding. The divergence requires a second document.
+                   Eliminated on set contents, not on strength.
+
+                   STATE_MISMATCH (P3). Every content span is scoped to the
+                   documented state. The narrative reads "Patient presents s/p
+                   robotic right inguinal hernia repair with mesh", the Problems
+                   table carries "Right Inguinal Hernia | Active", and the Reason
+                   for Visit reads "Post Operative Visit". No span is scoped to a
+                   state other than the one recorded. Eliminated on absence of a
+                   conflicting scope statement.
+
+WOULD FLIP THIS    Any bound on either instruction, anywhere in the document — a
+                   weight, a duration, a restriction end date, an activity class,
+                   a dose, an interval, or a daily maximum. If such a span exists
+                   and was missed, this verdict fails. It would also flip on the
+                   arrival of a second document in the set: a companion handout
+                   assigning an opposing action to an observable finding named here
+                   would introduce a P1 and outrank this.
+
+FILED AS SYMPTOM   STRUCTURED_NARRATIVE_CONTRADICTION (P4), two instances. The
+                   narrative reads "follow up at 1 year post op, call with any
+                   questions/issues" while the Plan of Care table records
+                   "None recorded." at the Appointments row. Separately, the
+                   narrative records counseling delivered at the visit while the
+                   structured field reads "Discussion Note: None recorded."
+                   Demoted: outranked by P2.
+
+                   CONTACT_ABSENCE (P5). Three contact directives — "please contact
+                   our office", "call with any questions/issues", and "Contact your
+                   provider if this list needs to be updated" — with no phone
+                   number, portal instruction, or after-hours guidance present in
+                   the document. Demoted, and flagged pending verification: the
+                   letterhead and the Demographics contact field are redacted in the
+                   repository copy. This finding may be an artifact of redaction
+                   rather than a property of the original and cannot be resolved
+                   against this copy.
+
+                   FIELD_INCOMPLETENESS (P6). "Patient educational handouts: No
+                   information available." Also the Prescribed Date and Start Date
+                   columns, present and empty across all nine medication rows.
+                   Demoted: tier P6.
+
+RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
