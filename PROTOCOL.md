@@ -261,3 +261,18 @@ that would change its verdict.
 - No rule, threshold, taxonomy class, gate, or tie-break was altered
   in response to the practitioner session.
 
+## Amendment — 2026-08-07
+
+- **PUBLIC-rung specimen admitted, procedure class widened.** Specimens
+  04 and 05 are MedlinePlus patient instruction pages for laparoscopic
+  cholecystectomy, a procedure class outside the one named on
+  2026-08-03. The widening is recorded here before the run, not after
+  it. Source URLs and retrieval date are in the specimen headers.
+  Rationale: OD-5 records that no end-to-end run exists, and specimens
+  01–02 cannot supply one because `examples.md` contains a worked
+  diagnosis of them by name. A specimen absent from `examples.md` is
+  required.
+- **Result is binding.** The first run is the shipped run, whatever it
+  returns, including a refusal or a class the builder disagrees with.
+  Per the Stated assumption above, an unwanted result is logged, not
+  re-rolled.
