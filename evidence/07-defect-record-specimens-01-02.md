@@ -13,18 +13,23 @@ following robotic right inguinal hernia repair with mesh.
 ## Provenance and blinding
 
 This record was produced by the builder in conversation with an assistant,
-before any diagnostician run and before the practitioner session.
+before any diagnostician run and before any practitioner session.
 
 **The builder's own answer key is therefore not blind.** She read a structured
 defect analysis prior to writing one. This is disclosed rather than corrected,
 because it cannot be corrected after the fact.
 
-The independent key for this specimen set is the practitioner session
-(`08-practitioner-session.md`), conducted with a registered nurse who received
-the documents without the schema, the defect classes, or any statement of the
-hypothesis. Her unprompted answer is recorded before any specific question was
-asked. That session, not this record, is the answer key against which the
-diagnostician run is scored.
+No independent answer key exists for this specimen set as of this writing. An exploratory 
+interview with a retired hospital pharmacist is filed at `background/exploratory-interview-2026-08-03-retired-pharmacist.md` 
+and is labeled there as background rather than evidence; the subject discussed discharge practice in general 
+and did not read these specimens. A practitioner session is planned: a registered nurse will receive the 
+documents without the schema, the defect classes, or any statement of the hypothesis, and her unprompted 
+answer will be recorded before any specific question is asked. If completed, it will be filed as 
+`08-practitioner-session.md` and that becomes the answer key against which the diagnostician 
+run is scored — not this record.
+
+Until then, the findings below rest on a single unblinded reader. That is a real limit on what 
+this record can support, and it is stated here rather than resolved.
 
 ---
 
