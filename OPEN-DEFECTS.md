@@ -47,66 +47,67 @@ The builder's own defect record is not blind, disclosed in the 2026-08-04
 close it: a delivery failure meant the instrument's primary finding was never put
 to the practitioner under blind conditions.
 
-## OD-5 — the ranking path has never run on model-generated labels
+## OD-5 — no blind run has produced a primary defect
 
-**Status:** narrowed 2026-08-06, not closed.
+**Status:** narrowed twice on 2026-08-06, not closed.
 
 The JSON files in `runs/` for specimens 01–03 carry builder-authored labels
-transcribed from `evidence/07`, which states on its own face that it was produced
-before any diagnostician run.
+transcribed from `evidence/07`. `runs/README.md` once described them as
+model-produced; that was wrong and was corrected 2026-08-06.
 
-**What has since been exercised.** An end-to-end run was performed on specimen-04
-on 2026-08-06 under pre-registered conditions. See
-`evidence/09-run-record-specimen-04.md`. The model, given only the diagnostician
-folder and an unlabeled document, produced a schema-conformant result.
+**What has since been exercised.** Three runs on model-generated labels:
 
-**What remains unexercised.** That run returned `OUT_OF_SCOPE` and terminated
-before producing anchored candidates. The path this defect names — model emits
-labeled candidates, `verify.py` ranks them, a primary is computed — has still
-never run on labels a model wrote.
+- `evidence/09`, specimen-04 — `OUT_OF_SCOPE`. Terminated before candidates.
+- `evidence/11`, specimen-05 — `REFUSAL`. One admissible candidate, no primary.
+- `evidence/10`, specimen-01 — `THRESHOLD_ABSENCE` at P2. A primary, computed
+  from labels the model wrote.
 
-**Why specimens 01–02 cannot supply it.** `examples.md` contains a worked
-diagnosis of both by name. Any run against them with the folder loaded is an
-open-book test.
+**What remains open.** The one run that produced a primary was open-book:
+`examples.md` contains a worked diagnosis of specimen-01, so the model had the
+answer sheet loaded. The two uncontaminated runs both declined to produce a
+primary. No blind run has named a primary defect.
+
+**Why specimens 01–02 cannot supply one.** For as long as `examples.md` contains
+their worked diagnosis, any run against them is open-book.
 
 ## OD-6 — specimen-03 extraction not produced by a committed script
 
 **Status:** open, disclosed.
 
-The Preservation rule requires PDF-to-text conversion by a committed script. Both
-files ship for specimen-03, but its extraction predates `tools/pdf_to_text.py`
-and was produced manually. A reader can compare the two files but cannot
-reproduce the conversion step.
+The Preservation rule requires PDF-to-text conversion by a committed script.
+Specimen-03's extraction predates `tools/pdf_to_text.py` and was produced
+manually. A reader can compare the two files but cannot reproduce the conversion.
 
-## OD-7 — `verify.py` cannot process an `OUT_OF_SCOPE` report
+## OD-7 — `verify.py` cannot process `OUT_OF_SCOPE` or rendered output
 
-**Status:** open, found by the specimen-04 run, not patched.
+**Status:** open, not patched.
 
-`reference/verdict-schema.md` defines `OUT_OF_SCOPE` as a legal result and
-`examples.md` demonstrates one. `verify.py` implements only `VERDICT`,
-`REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE`, and `TIE_UNRESOLVED`. A conforming
-`OUT_OF_SCOPE` report cannot be verified by the deterministic layer, and no
-`runs/specimen-04.json` exists. The anchor was confirmed by hand; G1 did not run.
+`reference/verdict-schema.md` defines `OUT_OF_SCOPE` as a legal result;
+`verify.py` implements only `VERDICT`, `REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE`,
+and `TIE_UNRESOLVED`.
 
-The defect is a gap between the schema and the verifier, not a fault in either
-alone. The instrument behaved correctly and produced a result its own checker
-cannot read. Not fixed: the contamination rule bars changes to `verify.py`
-between the shipped runs and submission.
+A second gap emerged across all three live runs: the model returns rendered text,
+not the JSON `verify.py` ingests. No `runs/specimen-04.json`, `-05.json`, or
+`specimen-01.json` exists, and G1 has never run on a live output. Anchors in all
+three were verified by script outside the gate table, and all verified.
 
-## OD-8 — `tools/pdf_to_text.py` corrupts word spacing
+**Not fixed.** The contamination rule bars changes to `verify.py` between the
+shipped runs and submission.
 
-**Status:** open, found during the specimen-04 run, specimen preserved as-is.
+## OD-8 — the first extractor corrupted word spacing
 
-The extractor inserts spurious spaces inside words throughout its output —
-`M yself`, `w hich`, `item s` — an artifact of the source PDF's font encoding.
-Twenty-eight instances of three sample patterns appear in an 8.5 KB extraction.
+**Status:** fixed 2026-08-06; specimen-04 preserved uncorrected.
 
-**Consequence for the run.** The corrupted text is what was submitted to the
-diagnostician. The model read through it and reconstructed its anchor sentence in
-clean English, which is what a reader does — but that anchor is therefore not a
-literal substring of the specimen file and could not pass G1 against it. The
-anchor was confirmed by hand against the source PDF and is genuine.
+The original `tools/pdf_to_text.py` used pypdf's default extraction, which
+inserted spurious spaces inside words — `M yself`, `w hich`, `item s`. Its layout
+mode was worse, destroying word boundaries entirely. The script now uses
+pdfplumber and produces clean text.
 
-**Specimen not corrected.** Per the Preservation rule, specimens are used as
-received. Hand-cleaning it would mean the shipped specimen is not the text the
-model actually read.
+**Consequence for specimen-04.** The corrupted text is what the run at
+`evidence/09` actually read, so the specimen ships uncorrected per the
+Preservation rule. Its anchor is not a literal substring of the specimen file; it
+was verified against the source PDF and is genuine.
+
+**Consequence for the finding.** Specimen-05 is the same document re-extracted
+cleanly. It returned a different result — see `evidence/11`. The extraction
+defect changed the diagnosis, which is recorded rather than tidied away.
