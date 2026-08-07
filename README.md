@@ -33,7 +33,7 @@ person-shaped class in it cannot.
 Python standard library only. No key, no install, no network.
 
 ```
-python3 verify.py --test                        # ten gates, ten negative fixtures
+python3 verify.py --test                        # eleven gates, eleven negative fixtures
 python3 verify.py runs/specimen-03-control.json # the control refuses
 python3 verify.py runs/specimens-01-02.json     # the real set: ACTION_DIVERGENCE, P1
 ```
