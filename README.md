@@ -62,18 +62,22 @@ constraint — but its checks only flagged. #9 put the arithmetic in Python and 
 to the model. Here the checks block, and the ranking left the model too.
 
 
-**By design: the model labels, the ranking decides.** The model finds candidate defects
+**By design: the model labels, the ranking decides.** 
+
+The model finds candidate defects
 and anchors each to a verbatim span. It does not rank, does not pick the primary, does not
 choose a confidence level — a report that tries is rejected by gate G3. The ranking lives
 in [`verify.py`](verify.py): it checks every anchor against its source, drops any defect
 whose anchor fails, applies the tier order and tie-breaks, and computes the primary.
 
-`runs/` holds five sets. Two carry builder-authored labels, transcribed from
-`evidence/07` and marked as such. Three are live runs on model-generated labels:
-an `OUT_OF_SCOPE`, a refusal, and one verdict. Every anchor in all three was
-verified against its specimen; none was fabricated. What none of them is yet is a
-*blind* run that names a primary — the one that did was open-book, and the two
-clean ones both declined to name one. That gap is `OPEN-DEFECTS.md`, OD-5.
+`runs/` holds six sets. Two carry builder-authored labels, transcribed from `evidence/07`
+and marked as such. Four are live runs on model-generated labels: an `OUT_OF_SCOPE`, a
+refusal, and two verdicts. Every anchor in all four was verified against its specimen;
+none was fabricated. The most recent is the first on a blind, externally selected
+specimen — a model with no access to this repository chose the document, and seventeen of
+seventeen anchors verified. It named a primary. But its input carried an annotation
+ruling the top tier unreachable, and the earlier verdict was open-book. No run free of
+both has named a primary. That gap is `OPEN-DEFECTS.md`, OD-5.
 
 The ranking orders by expected harm, not by causal depth. A scope error explains why the
 wrong handout is in the set; the caregiver acts on the contradiction. Whether that is the
@@ -85,13 +89,15 @@ right order is an open question, stated as one in `reference/taxonomy.md`.
 - [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, written 2026-08-01 and committed 2026-08-03 as the repository's first commit, before any specimen was committed
 - [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what is known to be wrong with this repository at submission, including the one that matters most
 - [`evidence/08-practitioner-session.md`](evidence/08-practitioner-session.md) — a practitioner read: the half that was blind, what it could not test, and the coverage gap it walked into
-- [`runs/`](runs/) — five run sets: two builder-authored, three live on model-generated labels
+- [`runs/`](runs/) — six run sets: two builder-authored, four live on model-generated labels
 - [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
 - [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
 - [`reference/taxonomy.md`](reference/taxonomy.md) — the tier table and its ordering principle
 - [`reference/disguised-asks.md`](reference/disguised-asks.md) — the gate table, and what the gates structurally cannot catch
 
-Limits are stated rather than patched. No blind run has named a primary defect; OD-5 says so. No independent answer key exists for the shipped specimens; the record says so. Five
+Limits are stated rather than patched. A blind, externally selected specimen has now named a primary defect with every anchor
+verified, but its input carried an annotation ruling the top tier unreachable. No run free
+of both that and the open-book contamination has named one; OD-5 says so. No independent answer key exists for the shipped specimens; the record says so. Five
 document properties have no matching defect class, so defects there are invisible; the
 taxonomy says so. One class of smuggled fix passes every gate; the gate table says so.
 The disguised-ask table catalogues ten asks backed by five mechanical checks; the
