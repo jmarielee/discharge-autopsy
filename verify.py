@@ -7,7 +7,7 @@ The model labels. This decides.
 The model's job is to produce candidate defects, each with a taxonomy class, a locus,
 and one or more verbatim anchors. It does not choose the primary defect, does not
 assign a tier, and does not decide whether to refuse. This script does all three,
-from the ranking in reference/taxonomy.md, and then runs ten gates against the result.
+from the ranking in reference/taxonomy.md, and then runs eleven gates against the result.
 
 Python standard library only. No network, no key, no model call.
 
@@ -225,7 +225,7 @@ def _keep_max(items, key):
 
 
 # ---------------------------------------------------------------------------
-# The ten gates
+# The eleven gates
 # ---------------------------------------------------------------------------
 
 def all_prose(report, primary):
