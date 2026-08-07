@@ -111,3 +111,50 @@ was verified against the source PDF and is genuine.
 **Consequence for the finding.** Specimen-05 is the same document re-extracted
 cleanly. It returned a different result — see `evidence/11`. The extraction
 defect changed the diagnosis, which is recorded rather than tidied away.
+
+## OD-9 — the locus rule was unenforced in prose until 2026-08-07
+
+**Status:** fixed 2026-08-07 under the Contamination rule's re-run provision.
+
+`G2` checked the `LOCUS` field. `G4` checked the class name. Neither read the
+free text. A report naming a person as the cause in `CHAIN` — including the
+literal string "non-compliant patient" — passed all ten gates and returned
+`VERIFIED`, exit 0. The README claimed no field existed where that sentence
+could be written. `CHAIN`, `RULED OUT`, `FILED AS SYMPTOM`, and
+`WOULD FLIP THIS` all were.
+
+The asymmetry is the substance of the defect. `G5` already ran a prose scanner
+over exactly these fields to catch smuggled fixes. The no-fix rule was enforced
+structurally; the locus rule — the differentiator — was enforced by instruction
+only, while the repository claimed the opposite.
+
+Two adversarial fixtures existed for person-blame, `negative-G2` and
+`negative-G4`, aimed at the `LOCUS` field and the class name. Both are the
+guarded doors. None was aimed at the prose.
+
+**Found by external review, not by a run.** It is recorded here rather than
+credited to the build.
+
+**Fix.** `G11` scans the same prose bundle `G5` uses and rejects named
+person-blame constructions. Fixture: `tests/fixtures/negative-G11-person-blame.json`.
+`negative-G4` now also trips `G11` — its invented class is `PATIENT_NONCOMPLIANCE`
+and its note reads "Reader did not act on the stated follow-up" — and declares
+the collateral rather than suppressing it.
+
+**No shipped result changed.** Both run sets and all eleven prior fixtures return
+identical results with `G11` in place. The gate was added after the results were
+fixed and moved none of them.
+
+**What G11 cannot see.** It matches named constructions. Novel paraphrase passes,
+the same limit already stated for `G5`. It also cannot distinguish blame asserted
+from blame quoted in order to be refused, which will matter when `OUT_OF_SCOPE`
+is implemented against `verify.py` (OD-7).
+
+## OD-3 — superseded 2026-08-07
+
+The self-test line now prints the blocking gate rather than the report's result,
+and a report failing any gate withholds its verdict block. The original entry's
+stated reason for leaving it — the Contamination rule — was wrong: that rule
+governs rules, discriminators, thresholds, and detectors, and display formatting
+is none of those.
+

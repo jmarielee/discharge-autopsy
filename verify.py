@@ -91,6 +91,25 @@ CLINICAL = [
     r"\bclinically (?:in)?appropriate\b",
 ]
 
+# G11 — person-blame in prose. The locus rule, enforced where a reader reads.
+# G2 checks the LOCUS field and G4 checks the class name. Neither reads the free
+# text. Until 2026-08-07 a report could name a person in CHAIN and pass all ten
+# gates; see OPEN-DEFECTS.md, OD-9.
+PERSON_BLAME = [
+    r"\bnon-?compliant\b", r"\bnon-?adheren", r"\bnoncompliance\b",
+    r"\b(?:patient|caregiver|family|reader|user|carer)\s+(?:error|fault|failure|mistake)\b",
+    r"\b(?:failed|neglected|forgot)\s+to\s+(?:read|follow|comply|call|administer|attend|give|take)\b",
+    r"\b(?:patient|caregiver|family|reader|user|carer)\b[^.]{0,40}\b(?:did not|didn't|failed to|neglected to|forgot to|ignored|disregarded|misread|overlooked|never read)\b",
+    r"\bagainst (?:instruction|instructions|advice|orders|guidance)\b",
+    r"\bshould have (?:read|followed|called|known|noticed|asked|checked)\b",
+    r"\b(?:careless|negligent|negligence)\b",
+    r"\b(?:patient|caregiver|family|reader|user|carer)\s+(?:administered|gave|applied|took|used|continued|stopped|skipped)\b",
+]
+
+# The full gate list, in one place. Previously hardcoded as range(1, 11) in
+# three separate loops.
+GATES = [f"G{i}" for i in range(1, 12)]
+
 
 # ---------------------------------------------------------------------------
 # Anchor matching (G1)
@@ -314,6 +333,11 @@ def run_gates(report, result, primary, anchored, dropped, corpus):
     ok = len(wf.split()) >= 8
     g["G10"] = (ok, "falsifier stated" if ok else "falsifier missing or too vague")
 
+
+    # G11 — no person named as the cause, anywhere in the prose.
+    hits = [p for p in PERSON_BLAME if re.search(p, prose, re.I)]
+    g["G11"] = (not hits, f"person-blame: {hits}" if hits else "locus holds in prose")
+
     return g
 
 
@@ -329,7 +353,11 @@ def emit(report, result, primary, anchored, dropped, gates):
     out.append("=" * 70)
     out.append("")
 
-    if result == "VERDICT":
+    rejected = any(not ok for ok, _ in gates.values())
+
+    if result == "VERDICT" and rejected:
+        out.append("PRIMARY DEFECT     WITHHELD — a gate failed; see GATES below.")
+    elif result == "VERDICT":
         out.append(f"PRIMARY DEFECT     {primary['class']}")
         out.append(f"TIER               {primary['tier']}  (computed, not claimed)")
         out.append(f"LOCUS              {primary['locus']}")
@@ -360,7 +388,7 @@ def emit(report, result, primary, anchored, dropped, gates):
 
     out.append("")
     out.append("GATES")
-    for name in [f"G{i}" for i in range(1, 11)]:
+    for name in GATES:
         ok, msg = gates[name]
         out.append(f"  {name}  {'PASS' if ok else 'FAIL'}  {msg}")
 
@@ -423,16 +451,19 @@ def self_test():
             problems.append(f"result {result}, expected {want_result}")
 
         status = "ok" if not problems else "FAIL"
-        print(f"  {status:4}  {f.name}  ->  {result}"
+        if want_gate:
+            outcome = f"blocked by {want_gate}" if not problems else f"NOT blocked ({result})"
+        else:
+            outcome = f"clean -> {result}"
+        print(f"  {status:4}  {f.name}  ->  {outcome}"
               + (f"  [{'; '.join(problems)}]" if problems else ""))
         if problems:
             failures.append(f.name)
 
     print()
     print("COVERAGE ASSERTION")
-    missing = [f"G{i}" for i in range(1, 11) if f"G{i}" not in covered]
-    for i in range(1, 11):
-        n = f"G{i}"
+    missing = [n for n in GATES if n not in covered]
+    for n in GATES:
         print(f"  {n}  {'covered' if n in covered else 'NO NEGATIVE FIXTURE'}")
 
     print()

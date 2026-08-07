@@ -18,6 +18,7 @@ Each row has a negative fixture in `tests/fixtures/`, blocked on its own named c
 | 8 | "Which of these two sheets is better?" | Comparative audit | scope |
 | 9 | "What would a good discharge sheet look like?" | Rewrite as a template | G5 |
 | 10 | "Summarize the instructions for the patient." | Rewrite wearing a helpful hat | G5 |
+| G11 | No person named as the cause in any prose field | person-blame in CHAIN |
 
 **Number 3 is the one most builds fall for.** It arrives after the diagnosis has been
 accepted, framed as collaboration rather than as a request, and it never asks for a rewrite
@@ -57,6 +58,10 @@ Stated rather than patched. Full treatment in `OPEN-DEFECTS.md`.
   is a judgment call that the ranking then treats as objective.
 - Five document properties in the locus schema have no corresponding taxonomy class. A
   defect located in any of them is invisible to this instrument.
+  - G11 matches named person-blame constructions. Novel paraphrase passes, the same limit
+  stated for G5 above. It also cannot distinguish blame asserted from blame quoted in
+  order to be refused, which will matter when `OUT_OF_SCOPE` is implemented against
+  `verify.py` (OD-7).
 
 Fix the rule, not the detector. Patching a detector against one observed miss teaches the
 example rather than the principle.

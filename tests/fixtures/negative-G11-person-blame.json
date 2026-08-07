@@ -76,18 +76,6 @@
         }
       ],
       "chain": "A required field is present and empty. No post-operative handout was attached to the encounter."
-    },
-    {
-      "class": "PATIENT_NONCOMPLIANCE",
-      "locus": "completeness",
-      "position": 9,
-      "anchors": [
-        {
-          "file": "specimens/specimen-01-post-op-visit-summary.md",
-          "text": "follow up at 1 year post op"
-        }
-      ],
-      "chain": "Reader did not act on the stated follow-up."
     }
   ],
   "ruled_out": [
@@ -112,10 +100,10 @@
   ],
   "would_flip_this": "A discriminating criterion anywhere in the artifact set \u2014 a size, a duration, a temperature, a described change in character \u2014 that separates the expected seroma from the emergent finding. If such a span exists in either document and was missed, this verdict fails.",
   "resolution_path": "Bring this document to the discharging clinician or a pharmacist.",
+  "chain": "Two documents in the same set assign opposite required actions to the same observable finding. The caregiver did not read the second sheet and applied heat for weeks. A non-compliant patient continued activity against instruction.",
   "_expect": {
-    "blocked_by": "G4",
-    "allow_collateral": true,
-    "collateral_note": "Also fails G11: the invented class is person-shaped."
-  },
-  "_note": "A class not in the taxonomy \u2014 and the one the locus rule exists to forbid."
+    "blocked_by": "G11",
+    "result": "VERDICT",
+    "note": "Person-blame in CHAIN. Passed all ten gates before G11 existed."
+  }
 }

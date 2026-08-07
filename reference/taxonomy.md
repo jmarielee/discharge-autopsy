@@ -57,7 +57,7 @@ at home without access to the encounter.
 
 ## Known coverage gap
 
-Three document properties in the locus schema — `readability`, `arithmetic_demand`,
+Five document properties in the locus schema — `readability`, `arithmetic_demand`,
 `schedule_feasibility`, `prerequisite_gap`, and `navigability` — have no corresponding
 class in this taxonomy. A defect located in any of them is currently undetectable by this
 instrument. This is a real limitation, stated rather than patched; see `OPEN-DEFECTS.md`.

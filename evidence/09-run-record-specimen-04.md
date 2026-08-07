@@ -47,8 +47,8 @@ proposed no fix, and terminated at the discharging clinician. The end-to-end pat
 from specimen to model-generated output exists and behaves.
 
 More specifically, it declined a false positive it was capable of producing. Two
-taxonomy classes, `NAVIGATION_FAILURE` and `FIELD_INCOMPLETENESS`, would have
-fired on every ruled line in the document. The output names this and rejects it
+taxonomy classes, `CONTACT_ABSENCE` (P5) and `FIELD_INCOMPLETENESS` (P6), would
+have fired on every ruled line in the document. The output names this and rejects it
 on a stated principle: a blank the form supplies for completion is not the same
 object as a required field empty at issue, and the detection signature cannot
 separate them.
@@ -84,3 +84,12 @@ clean English, which is what a reader does — but the anchor therefore does not
 appear as a literal substring of the specimen file, and G1 could not have passed
 on it even if `verify.py` accepted `OUT_OF_SCOPE` reports. The anchor was
 confirmed by hand against the source PDF. Recorded as OD-8.
+
+---
+
+**Correction, 2026-08-07.** The sentence above originally named
+`NAVIGATION_FAILURE`. No such class exists — not in `reference/taxonomy.md` and
+not in `verify.py`. The run output at `runs/specimen-04-out-of-scope.txt` names
+"the two classes that remain mechanically evaluable, P5 and P6," which are
+`CONTACT_ABSENCE` and `FIELD_INCOMPLETENESS`. The error was the builder's, in
+this record; the transcript it describes is unaltered.

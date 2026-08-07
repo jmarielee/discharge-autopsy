@@ -304,3 +304,27 @@ that would change its verdict.
   differing result is the more interesting outcome and is recorded as such.
 - **Result is binding**, on the same terms as the 2026-08-07 entry. First run
   on specimen-05 is the shipped run.
+
+## Amendment — 2026-08-07
+
+- **Amendment dating error.** The block above headed `## Amendment — 2026-08-07`
+  was committed in `f29debc` at 2026-08-06T16:11:30-04:00. Its heading date is
+  one day ahead of its commit. It was also appended to after it was written, so
+  one dated entry records three sequential decisions: the MedlinePlus admission,
+  its withdrawal, and the AHRQ admission. It stands unedited above, and appears
+  out of sequence relative to the 2026-08-06 (evening) entry, which is also left
+  as committed. In a file whose value is dating discipline this is the error that
+  matters most, and it is corrected here rather than tidied above.
+
+- **G11 added; Contamination rule satisfied, not excepted.** The locus rule was
+  unenforced in prose (OD-9). The Contamination rule permits a fix once every
+  specimen has been run, shipped as a labeled re-run with both behaviours on the
+  record. Specimens 01-05 are all run and no sixth was admitted, so that
+  condition holds. The re-run is deterministic — `verify.py` against two report
+  files and twelve fixtures, no model call, no new specimen. No shipped result
+  changed. The defect was found by external review, not by a run.
+
+- **OD-3 superseded.** Display-layer only; not a rule, discriminator, threshold,
+  or detector, so the Contamination rule never barred it.
+
+- No taxonomy class, tier, threshold, or tie-break was altered.

@@ -1,16 +1,17 @@
 FIXTURES
-  ok    negative-G1-fabricated-quote.json  ->  VERDICT
-  ok    negative-G10-unfalsifiable.json  ->  VERDICT
-  ok    negative-G2-execution-side-locus.json  ->  VERDICT
-  ok    negative-G3-model-named-primary.json  ->  VERDICT
-  ok    negative-G4-invented-class.json  ->  VERDICT
-  ok    negative-G5-smuggled-fix.json  ->  VERDICT
-  ok    negative-G6-generated-routing.json  ->  VERDICT
-  ok    negative-G7-unruled-out.json  ->  VERDICT
-  ok    negative-G8-model-chosen-tier.json  ->  VERDICT
-  ok    negative-G9-clinical-judgment.json  ->  VERDICT
-  ok    positive-control-refuses.json  ->  REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE
-  ok    positive-specimens-01-02.json  ->  VERDICT
+  ok    negative-G1-fabricated-quote.json  ->  blocked by G1
+  ok    negative-G10-unfalsifiable.json  ->  blocked by G10
+  ok    negative-G11-person-blame.json  ->  blocked by G11
+  ok    negative-G2-execution-side-locus.json  ->  blocked by G2
+  ok    negative-G3-model-named-primary.json  ->  blocked by G3
+  ok    negative-G4-invented-class.json  ->  blocked by G4
+  ok    negative-G5-smuggled-fix.json  ->  blocked by G5
+  ok    negative-G6-generated-routing.json  ->  blocked by G6
+  ok    negative-G7-unruled-out.json  ->  blocked by G7
+  ok    negative-G8-model-chosen-tier.json  ->  blocked by G8
+  ok    negative-G9-clinical-judgment.json  ->  blocked by G9
+  ok    positive-control-refuses.json  ->  clean -> REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE
+  ok    positive-specimens-01-02.json  ->  clean -> VERDICT
 
 COVERAGE ASSERTION
   G1  covered
@@ -23,5 +24,6 @@ COVERAGE ASSERTION
   G8  covered
   G9  covered
   G10  covered
+  G11  covered
 
 All fixtures behaved as declared. Every gate has a negative fixture.

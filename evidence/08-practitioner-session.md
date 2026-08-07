@@ -198,12 +198,18 @@ about documentation practice. No finding in this repository depends on it.
 
 | | |
 |---|---|
-| **Confirmed** | specimen-02 cannot serve as take-home paperwork — reached independently, blind, from absence |
-| **Confirmed** | The reduction instruction is a real defect — same anchor, independent reason |
+| **Converged loosely** | specimen-02 cannot serve as take-home paperwork — she reached this from absence, the instrument from scope. Different findings, same conclusion. |
+| **Converged on the anchor** | The reduction instruction — same sentence flagged, but her objection was clinical, a class this instrument is forbidden to evaluate |
 | **Confirmed** | `prerequisite_gap` is a live coverage gap, not a theoretical one |
 | **Corroborated** | `THRESHOLD_ABSENCE` in specimen-01 — unblinded, lower weight |
 | **Not tested** | `ACTION_DIVERGENCE`, the instrument's primary. She never held both documents at once. It remains builder-only. |
 | **Unchanged** | The ranking, the taxonomy, the locus rule, the refusal threshold. No rule was altered in response to this session. |
+
+Her blind read enumerated missing prescriptions, dose, follow-up time, and signature —
+findings shaped like `CONTACT_ABSENCE` (P5) and `FIELD_INCOMPLETENESS` (P6), not like
+`STATE_MISMATCH` (P3). Run through this instrument's own refusal threshold, the only blind
+independent read of a specimen would not have sustained a primary defect, and its one
+substantive finding landed in a class the taxonomy does not have.
 
 ---
 

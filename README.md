@@ -18,10 +18,15 @@ is thin *because* the surgeon covered everything in person. Nothing was neglecte
 conversation ends at the office door, and the paper is what the caregiver still has at
 11pm.
 
-It cannot name a person as the cause — not by policy, by schema. There is no field in the
-output where "non-compliant patient" could be written, and the ranking that picks the
-primary defect contains no class a person could satisfy. A model asked to avoid blaming
-people can be argued into it. A ranking with no person-shaped class in it cannot.
+It cannot name a person as the cause, and three separate checks say so: the ranking
+contains no class a person could satisfy (G4), the locus field is a closed enum of
+document properties (G2), and the prose is scanned for named person-blame constructions
+(G11). G11 was added on 2026-08-07 after external review found that the first two guarded
+the fields and left the free text open; the record is OD-9. What G11 cannot catch is
+stated in `reference/disguised-asks.md`.
+
+A model asked to avoid blaming people can be argued into it. A ranking with no
+person-shaped class in it cannot.
 
 ## Verify it in ninety seconds
 
