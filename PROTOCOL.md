@@ -382,3 +382,13 @@ The re-prompt narrowed the source pool on license grounds. It did not change wha
   A refusal is the expected outcome and is a result, not a failure.
 
 - **First run is the shipped run**, on the same terms as every prior specimen. No re-roll.
+
+- **Commit-order disclosure.** The specimen-06 pre-registration above and the specimen
+  itself were committed together in `b7c3c58`. The amendment was written and saved before
+  the PDF was converted or read, but the git record cannot show that, and no claim is made
+  beyond the file order within the commit. Recorded rather than restaged.
+
+
+- **PDF committed by exception.** `.gitignore` excludes `*.pdf` to keep unredacted source
+  documents out of the repository. Specimen-06 is a U.S. Government work in the public
+  domain and is force-added so a reader can compare the source against the extraction.
