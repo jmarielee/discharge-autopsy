@@ -28,6 +28,7 @@ the result. That computation is independent of who wrote the labels.
 | `specimen-05-refusal` | model | `REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE` — same document, clean extraction |
 | `specimen-01-threshold-absence-OPEN-BOOK` | model | `THRESHOLD_ABSENCE`, P2 — contaminated, `examples.md` was loaded |
 | `gate-coverage` | — | Every gate blocked by its own negative fixture |
+| `specimen-06-threshold-absence` | model | `THRESHOLD_ABSENCE`, P2 — blind, externally selected; header contamination, OD-5 |
 
 **The control is the one to read first.** It carries a single known low-tier defect,
 recorded in the specimen header before any run. The instrument refuses rather than
