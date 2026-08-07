@@ -328,3 +328,57 @@ that would change its verdict.
   or detector, so the Contamination rule never barred it.
 
 - No taxonomy class, tier, threshold, or tie-break was altered.
+
+## Amendment — 2026-08-07 (specimen-06 pre-registration)
+
+- **Specimen-06 admitted.** A post-surgical diet handout published by the U.S.
+  Department of Veterans Affairs at `https://www.nutrition.va.gov/docs/UpdatedPatientEd/BariatricSurgerySoftDietStageNutritionTherapyMar2023.pdf`, accessed 2026-08-07. VA-authored,
+  not a third-party document hosted on a VA site. As a U.S. Government work it is in the
+  public domain and is committed to `specimens/` in full. PUBLIC rung.
+
+- **Externally selected.** The specimen was chosen by Google Gemini, which had no access
+  to this repository, its taxonomy, its schema, or any prior run. The builder did not
+  choose the specimen. Two prompts were sent. The first: I need you to pick one document for me. Don't ask what it's for.
+
+Find a publicly posted patient instruction sheet from a hospital, clinic, or health
+system — the kind of paperwork someone is given to take home after a procedure or an
+outpatient visit. Any procedure, any institution, any country that publishes in English.
+
+Constraints:
+- It must be publicly accessible on the web, no login or paywall.
+- It must be a real, completed instruction sheet — not a blank fillable template with
+  empty lines for someone to write in.
+- Prefer a page that includes both a visit summary and a companion care handout. If you
+  can only find one document, that's fine.
+- Do not pick anything from MedlinePlus or A.D.A.M./Ebix.
+- Do not pick based on whether the document seems good or bad. Pick the first one you
+  find that meets the constraints above.
+
+Reply with the URL and nothing else. No summary, no commentary, no reason for choosing it.
+
+This produced candidates whose licenses prohibited redistribution. A second prompt added
+  the license constraint and nothing else:
+
+  The document must be redistributable — a U.S. federal government work (public domain),
+a Creative Commons licensed document, or a UK public-sector document under the Open
+Government Licence. Do not send anything from a private hospital or university health
+system.
+
+The re-prompt narrowed the source pool on license grounds. It did not change what kind of
+  document was sought, and the instruction not to select on apparent quality was carried
+  forward unmodified.
+
+- **Three prior candidates rejected on license grounds.** All three carried terms
+  prohibiting redistribution. One consistent criterion, applied four times. One of the
+  three was skimmed before its license was checked: the builder formed a general
+  impression of it, identified no defect and located no anchor. It is not the admitted
+  specimen.
+
+- **Procedure class widened** to bariatric surgery for this specimen only. This is a
+  substantial widening — from wound care to staged post-surgical nutrition.
+
+- **Single document, not a set.** `ACTION_DIVERGENCE` requires two documents assigning
+  opposite actions to the same finding and is therefore structurally unreachable here.
+  A refusal is the expected outcome and is a result, not a failure.
+
+- **First run is the shipped run**, on the same terms as every prior specimen. No re-roll.
