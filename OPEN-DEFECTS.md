@@ -47,9 +47,9 @@ The builder's own defect record is not blind, disclosed in the 2026-08-04
 close it: a delivery failure meant the instrument's primary finding was never put
 to the practitioner under blind conditions.
 
-## OD-5 — no blind run has produced a primary defect
+## OD-5 — no uncontaminated blind run has produced a primary defect
 
-**Status:** narrowed twice on 2026-08-06, not closed.
+**Status:** narrowed three times. Not closed.
 
 The JSON files in `runs/` for specimens 01–03 carry builder-authored labels
 transcribed from `evidence/07`. `runs/README.md` once described them as
@@ -77,6 +77,8 @@ their worked diagnosis, any run against them is open-book.
 The Preservation rule requires PDF-to-text conversion by a committed script.
 Specimen-03's extraction predates `tools/pdf_to_text.py` and was produced
 manually. A reader can compare the two files but cannot reproduce the conversion.
+
+
 
 ## OD-7 — `verify.py` cannot process `OUT_OF_SCOPE` or rendered output
 

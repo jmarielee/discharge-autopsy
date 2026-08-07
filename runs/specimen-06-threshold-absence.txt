@@ -1,0 +1,154 @@
+Run: specimen-06, VA Bariatric Surgery Soft Diet Stage Nutrition Therapy (03/2023)
+Date: 2026-08-07
+Diagnostician: fresh Claude Project, identity.md + rules.md + examples.md + reference/ only
+Pre-registered: PROTOCOL.md amendment 2026-08-07, committed 2da2136
+Labels: model-generated. Not builder-authored.
+Contamination: specimen header comment not stripped from input. See evidence/12.
+
+Transcript follows, verbatim.
+
+======================================================================
+
+**Input:** specimen-06, a single VA Nutrition and Food Services patient handout, *Bariatric Surgery Soft Diet Stage Nutrition Therapy* (03/2023). One document, four pages. Blind specimen — selected externally, no repository access.
+
+```
+PRIMARY DEFECT     THRESHOLD_ABSENCE
+TIER               P2
+LOCUS              observability
+
+ANCHORS            p1, opening paragraph:
+                   "Always stop eating when no longer hungry."
+                   "Fullness will feel different now than before surgery."
+
+                   p1, Tips:
+                   "Stop eating when you are no longer hungry."
+
+                   p3, Sample Meal Plan:
+                   "It is important to work up slowly to these amounts."
+
+                   p3, Common Food Intolerances:
+                   "could cause impaction if too large a quantity is eaten"
+
+CHAIN              The document's governing stop rule is a sensation. It appears
+                   twice, once in the opening paragraph and once in Tips, and in
+                   both places the required action — stop — is conditioned on the
+                   reader recognizing that they are no longer hungry.
+
+                   The same paragraph that states the rule also states that the
+                   criterion has changed: "Fullness will feel different now than
+                   before surgery." How it will feel different is not described
+                   anywhere in the four pages. No sensation, no landmark, no
+                   substitute cue. The criterion is named, disclaimed, and left
+                   unquantified in the same breath.
+
+                   The numeric figures in the set do not close it. "Aim to consume
+                   4-6 planned meals with each meal up to a volume of 4 oz. (1/2 c.)"
+                   is a planning ceiling that the next sentence explicitly defers:
+                   "It is important to work up slowly to these amounts." No rate,
+                   no increment, no duration for that progression appears in the set,
+                   so the reader cannot convert the ceiling into a stop rule for
+                   today's meal.
+
+                   The failure a caregiver experiences: at every meal, four to six
+                   times a day, they must decide when to stop on a cue the document
+                   has told them is unreliable and has not re-described. The
+                   consequences the document does name are unbounded on the same
+                   axis — "may lead to discomfort in your chest or abdomen or induce
+                   vomiting" for over-eating, and impaction "if too large a quantity
+                   is eaten," a quantity stated nowhere in the set.
+
+RULED OUT          ACTION_DIVERGENCE (P1). Tested rather than assumed: the locus
+                   schema defines internal_consistency as contradiction "within or
+                   across sheets," so the class is reachable inside a single
+                   document. Anchored candidate: the Grains row recommends "Short
+                   pasta and noodles" while the narrative states that "Refined
+                   carbohydrates like white breads, rice and pastas expand in your
+                   new structure which can cause discomfort". Eliminated on the
+                   class definition — the narrative span assigns no required action,
+                   and a food listing is not an observable finding. The pair is an
+                   advisory against a recommendation, not opposite actions.
+
+                   STATE_MISMATCH (P3). Eliminated for absence of the second term.
+                   The class requires an encounter state conflicting with a handout
+                   scope statement. The specimen carries a scope statement — "This is
+                   the fourth diet stage after bariatric surgery" — and no encounter
+                   document. Nothing exists to conflict with it. Noted and not
+                   advanced: the set never states when stage four begins or ends
+                   relative to "at least 3 months after surgery," so a reader cannot
+                   locate themselves in it, but no class covers that.
+
+WOULD FLIP THIS    Any span in the four pages that quantifies a stop point rather
+                   than a target: a described sensation replacing the pre-surgical
+                   fullness cue, a per-meal volume the reader is told to stop at
+                   rather than work toward, a rate for "work up slowly," or a stated
+                   quantity for "too large a quantity." If such a span exists and was
+                   missed, this verdict fails.
+
+                   Also flips on a reading question rather than a missing span: if
+                   "up to a volume of 4 oz. (1/2 c.)" governs as the operative stop
+                   rule and the deferral sentence does not withdraw it, P2 collapses.
+                   The remaining anchored defects are P5 and P6 only, which fails the
+                   refusal threshold, and this run becomes
+                   REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE rather than a verdict.
+
+FILED AS SYMPTOM   CONTACT_ABSENCE (P5): three contact directives with no channel in
+                   the set — "follow your bariatric dietitian’s recommendations",
+                   "Take vitamin/mineral supplements daily as prescribed by the
+                   bariatric team.", and "Discuss healthy snack suggestions with a
+                   dietitian." No phone, no portal, no hours. Demoted: outranked by
+                   P2, and flagged as contested — the page footer carries
+                   "www.nutrition.va.gov", and whether a publications URL satisfies
+                   the class's portal token is a classification call, not an
+                   anchoring one.
+
+                   FIELD_INCOMPLETENESS (P6): in the Food Choices table, the row
+                   "Fats and Oils" carries a recommended entry and no entry in the
+                   Foods Not Recommended column. Demoted: tier P6, and flagged
+                   pending verification — the specimen is a text extraction of a PDF
+                   table, and an empty cell is not distinguishable from an extraction
+                   artifact in this copy.
+
+                   Unclassified, and stated because it was observed: the seven water
+                   rows of the Sample Meal Plan at their low end total less than the
+                   goal in "Aim to consume at least 48-64 ounces (6-8 cups) of fluids
+                   each day." Separately, "Take 20-30 minutes to finish a meal.",
+                   "Remember to separate meals from liquids by at least 30 minutes.",
+                   and four to six meals a day compound into a timing demand the
+                   document does not total. Both fall in arithmetic_demand and
+                   schedule_feasibility, which have no class in the taxonomy. They
+                   are invisible to this instrument and are not findings.
+
+RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
+```
+
+**Ranking check.** Three anchored defects, highest tier P2, one class at P2, no tie. Refusal threshold met on both conditions: total ≥ 2, and one defect at P3 or higher.
+
+**Two notes on this run.** The specimen header asserts that ACTION_DIVERGENCE is structurally unreachable in a single document. That annotation was not accepted — the locus schema admits contradiction within one sheet, so P1 was tested and eliminated on the class definition instead, with an anchored candidate.
+
+And this is a blind specimen that names a primary defect, which is the shape OD-5 says the repository does not yet have. It is not a closed gap: no independent answer key exists for this specimen, so the run demonstrates that a blind specimen can produce a primary, not that this primary is correct.
+
+======================================================================
+
+ANCHOR VERIFICATION — check-anchors.py, 2026-08-07
+
+  OK    Always stop eating when no longer hungry.
+  OK    Fullness will feel different now than before surgery.
+  OK    Stop eating when you are no longer hungry.
+  OK    It is important to work up slowly to these amounts.
+  OK    could cause impaction if too large a quantity is eaten
+  OK    Aim to consume 4-6 planned meals with each meal up to a volume of 4 oz
+  OK    may lead to discomfort in your chest or abdomen or induce vomiting
+  OK    Refined carbohydrates like white breads, rice and pastas expand in you
+  OK    This is the fourth diet stage after bariatric surgery
+  OK    at least 3 months after surgery
+  OK    follow your bariatric dietitian's recommendations
+  OK    Take vitamin/mineral supplements daily as prescribed by the bariatric
+  OK    Discuss healthy snack suggestions with a dietitian.
+  OK    Aim to consume at least 48-64 ounces (6-8 cups) of fluids each day.
+  OK    Take 20-30 minutes to finish a meal.
+  OK    Remember to separate meals from liquids by at least 30 minutes.
+  OK    Short pasta and noodles
+
+  17/17 verified, 0 failed
+
+G1 did not run. verify.py ingests JSON; this output is rendered text. See OD-7.
