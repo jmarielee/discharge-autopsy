@@ -56,6 +56,10 @@ Add only those files. `evidence/` and `runs/` contain worked diagnoses of the sh
 specimens, and loading them turns a run into an open-book test.
 
 ## The design decision
+The fourth build on one thesis. #7 computed the score in code instead of letting the model
+pick it. #8 named the line — a must in markdown is a request, a must in code is a
+constraint — but its checks only flagged. #9 put the arithmetic in Python and left judgment
+to the model. Here the checks block, and the ranking left the model too.
 
 **By design: the model labels, the ranking decides.** The model finds candidate defects
 and anchors each to a verbatim span. It does not rank, does not pick the primary, does not
