@@ -1,0 +1,56 @@
+RESULT             REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE
+ANCHORED DEFECTS   THRESHOLD_ABSENCE (P2) — page 1, contact block:
+                   "If I have a serious health problem, I should call:"
+                   The document routes the reader to two distinct escalation
+                   channels, discriminated only by the word "serious":
+                   "If I have questions or problems, I should call:" is a
+                   separate directive with a separate contact and a separate
+                   number. No numeric, temporal, or sensory bound for "serious"
+                   appears anywhere in the specimen. The document carries no
+                   warning-signs section, no symptom list, and no observable
+                   finding of any kind. Admissible: this absence is a property
+                   of the template itself and is not a slot completion fills —
+                   there is no blank anywhere in the specimen where a criterion
+                   would be entered.
+                   —
+                   EXCLUDED, BLANK-STATE   The following candidates anchor
+                   cleanly but are not admitted, because the specimen is the
+                   published pre-completion instrument, not a completed copy.
+                   Its own front matter establishes this state:
+                   "Talk with the hospital staff about each of the items that are listed"
+                   and "Take the completed guide home with you."
+                   FIELD_INCOMPLETENESS (P6) — every field in the specimen.
+                   Anchors available at the medication tables
+                   ("Medicine name Why am I taking How much How do I take"),
+                   the open-ended prompts ("What are my medication allergies?"),
+                   and the appointment blocks ("Doctor's phone number").
+                   A field blank before use is not a required field left empty.
+                   Admitting these would return roughly sixty defects and a
+                   finding that reads "this form is blank" — a fact about the
+                   specimen's provenance, not a defect a reader encounters.
+                   CONTACT_ABSENCE (P5) — the same contact directive carries no
+                   reachable channel, the phone line being unpopulated. Excluded
+                   on the same ground: that line is the slot completion fills.
+WHY REFUSED        One of the two threshold conditions fails.
+                   Condition 2 holds: one admissible anchored defect reaches
+                   tier P2, which is above P3.
+                   Condition 1 fails: total admissible anchored defects is 1,
+                   below the required 2. The blank-state candidates cannot be
+                   counted toward it without also being reportable, and they
+                   are not reportable against this specimen.
+                   This refusal differs from the control refusal on the
+                   After Hospital Care Plan, where both conditions failed. Here
+                   a single defect of real tier stands alone. One defect, however
+                   high its tier, is a flaw and not a cause.
+WOULD RESOLVE      A second anchored defect that survives completion — one
+                   located in the fixed printed text rather than in an
+                   unpopulated field. A contradiction between two printed
+                   directives, or a scope statement in the fixed text
+                   conflicting with a patient state the form elsewhere records,
+                   would each qualify.
+                   Alternatively, the same document as a completed artifact set
+                   from one encounter. In that state the blank-state exclusions
+                   no longer apply, the P6 and P5 candidates become admissible
+                   or resolve, and the specimen becomes diagnosable on its
+                   contents rather than on its printing.
+RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
