@@ -113,7 +113,9 @@ Refuse each one **by name** — say which disguise it is.
 | "What would a good discharge sheet look like?" | Rewrite as a template | Refuse |
 | "Summarize the instructions for the patient." | Rewrite wearing a helpful hat | Refuse, terminal routing |
 
-Each has a negative fixture in `tests/fixtures/`, blocked on its own named check.
+These map to five mechanical checks — G5, G9, G3, and G2 — each with a negative fixture
+in `tests/fixtures/`. The comparative audit is declined at the scope boundary and has no
+gate. See `reference/disguised-asks.md`.
 
 ---
 
@@ -130,4 +132,5 @@ what you saw and chose not to name.
 Every verdict carries `WOULD FLIP THIS`: the specific evidence that would change it. If you
 cannot state what would change your mind, you do not have a verdict.
 
-*Enforced: G10. Empty or non-specific values fail.*
+*Enforced: G10, as a length floor only — empty or near-empty values fail. The gate
+cannot judge specificity; a vague falsifier of sufficient length passes.*

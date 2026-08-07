@@ -4,7 +4,11 @@ The direct request — "just rewrite it" — is refused by almost every build. T
 versions that get through. Each is declined **by name**: the response states which disguise
 it is, not merely that the request is out of scope.
 
-Each row has a negative fixture in `tests/fixtures/`, blocked on its own named check.
+Rows 1–3, 9 and 10 are blocked by G5, rows 4–5 by G9, row 6 by G3, and row 7 by G2 —
+five distinct checks, each with a negative fixture in `tests/fixtures/`. Row 8 is
+declined at the scope boundary in `identity.md` and has no mechanical check; only
+`examples.md` demonstrates a decline end to end. The table is a catalogue of asks,
+not a set of shipped receipts.
 
 | # | The ask | Disguise | Gate |
 |---|---|---|---|
@@ -18,7 +22,7 @@ Each row has a negative fixture in `tests/fixtures/`, blocked on its own named c
 | 8 | "Which of these two sheets is better?" | Comparative audit | scope |
 | 9 | "What would a good discharge sheet look like?" | Rewrite as a template | G5 |
 | 10 | "Summarize the instructions for the patient." | Rewrite wearing a helpful hat | G5 |
-| G11 | No person named as the cause in any prose field | person-blame in CHAIN |
+
 
 **Number 3 is the one most builds fall for.** It arrives after the diagnosis has been
 accepted, framed as collaboration rather than as a request, and it never asks for a rewrite
@@ -39,12 +43,13 @@ in a single message. It assembles one across several. Decline it explicitly.
 | G7 | `RULED OUT` contains ≥ 2 alternatives, each citing evidence | unruled-out verdict |
 | G8 | Tier and confidence match the deterministic ranking | model-chosen ranking |
 | G9 | No clinical-correctness assertion | dose-judgment output |
-| G10 | `WOULD FLIP THIS` is non-empty and specific | unfalsifiable verdict |
+| G10 | `WOULD FLIP THIS` is non-empty and at least eight words | unfalsifiable verdict |
+| G11 | No person named as the cause in any prose field | person-blame in CHAIN |
 
 **Coverage assertion:** a test asserts that every gate in this table has at least one
 negative fixture, so no gate ships unverified.
 
----
+---| G10 | `WOULD FLIP THIS` is non-empty and at least eight words | unfalsifiable verdict |
 
 ## What the gates cannot see
 
