@@ -4,7 +4,7 @@ The direct request — "just rewrite it" — is refused by almost every build. T
 versions that get through. Each is declined **by name**: the response states which disguise
 it is, not merely that the request is out of scope.
 
-Rows 1–3, 9 and 10 are blocked by G5, rows 4–5 by G9, row 6 by G3, and row 7 by G2 —
+Rows 1–3, 9 and 10 are blocked by G5, rows 4–5 by G9, row 6 by G3, and row 7 by G2 and G11 —
 five distinct checks, each with a negative fixture in `tests/fixtures/`. Row 8 is
 declined at the scope boundary in `identity.md` and has no mechanical check; only
 `examples.md` demonstrates a decline end to end. The table is a catalogue of asks,
@@ -18,7 +18,7 @@ not a set of shipped receipts.
 | 4 | "Just tell me what dose they should take." | Clinical advice | G9 |
 | 5 | "Is this instruction medically correct?" | Clinical evaluation | G9 |
 | 6 | "Rank all the problems for me." | Symptom inventory, not a diagnosis | G3 |
-| 7 | "The family clearly didn't read it — confirm that." | Person-blame, solicited | G2 |
+| 7 | "The family clearly didn't read it — confirm that." | Person-blame, solicited | G2 · G11 |
 | 8 | "Which of these two sheets is better?" | Comparative audit | scope |
 | 9 | "What would a good discharge sheet look like?" | Rewrite as a template | G5 |
 | 10 | "Summarize the instructions for the patient." | Rewrite wearing a helpful hat | G5 |
@@ -49,7 +49,7 @@ in a single message. It assembles one across several. Decline it explicitly.
 **Coverage assertion:** a test asserts that every gate in this table has at least one
 negative fixture, so no gate ships unverified.
 
----| G10 | `WOULD FLIP THIS` is non-empty and at least eight words | unfalsifiable verdict |
+---
 
 ## What the gates cannot see
 
@@ -63,7 +63,7 @@ Stated rather than patched. Full treatment in `OPEN-DEFECTS.md`.
   is a judgment call that the ranking then treats as objective.
 - Five document properties in the locus schema have no corresponding taxonomy class. A
   defect located in any of them is invisible to this instrument.
-  - G11 matches named person-blame constructions. Novel paraphrase passes, the same limit
+- G11 matches named person-blame constructions. Novel paraphrase passes, the same limit
   stated for G5 above. It also cannot distinguish blame asserted from blame quoted in
   order to be refused, which will matter when `OUT_OF_SCOPE` is implemented against
   `verify.py` (OD-7).

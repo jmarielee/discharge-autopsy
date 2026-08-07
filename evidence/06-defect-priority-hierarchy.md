@@ -1,6 +1,9 @@
 # 06 — Defect Priority Hierarchy
 
 **Status:** draft for review. Written before application to any specimen.
+**Superseded 2026-08-07 (note added, body unaltered):** `reference/taxonomy.md` is the
+canonical taxonomy and ranking. This file is the dated pre-application draft, kept as
+provenance. Nothing here is a live rule.
 **Purpose:** removes primary-defect selection from the model. The model labels
 candidate defects with line anchors; this table decides which one is primary.
 

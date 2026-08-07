@@ -84,8 +84,10 @@ FILED AS SYMPTOM   THRESHOLD_ABSENCE (P2): "okay to return to activity & guide
 RESOLUTION PATH    Bring this document to the discharging clinician or a pharmacist.
 ```
 
-**Ranking check.** Six anchored defects, highest tier P1, single instance at P1, no tie.
-Refusal threshold not triggered.
+**Ranking check.** Five anchored defects, highest tier P1, single instance at P1, no tie.
+Refusal threshold not triggered. A sixth candidate, CONTACT_ABSENCE (P5), is listed above
+unanchored — the letterhead is redacted in the repository copy — and is excluded from the
+ranking by Rule 1.
 
 **Disclosure.** The builder was not blind to this specimen when the taxonomy was applied.
 See *Provenance and blinding* in `07-defect-record-specimens-01-02.md`. This is a
