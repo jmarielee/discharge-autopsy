@@ -61,6 +61,7 @@ pick it. #8 named the line — a must in markdown is a request, a must in code i
 constraint — but its checks only flagged. #9 put the arithmetic in Python and left judgment
 to the model. Here the checks block, and the ranking left the model too.
 
+
 **By design: the model labels, the ranking decides.** The model finds candidate defects
 and anchors each to a verbatim span. It does not rank, does not pick the primary, does not
 choose a confidence level — a report that tries is rejected by gate G3. The ranking lives
@@ -73,6 +74,11 @@ an `OUT_OF_SCOPE`, a refusal, and one verdict. Every anchor in all three was
 verified against its specimen; none was fabricated. What none of them is yet is a
 *blind* run that names a primary — the one that did was open-book, and the two
 clean ones both declined to name one. That gap is `OPEN-DEFECTS.md`, OD-5.
+
+The ranking orders by expected harm, not by causal depth. A scope error explains why the
+wrong handout is in the set; the caregiver acts on the contradiction. Whether that is the
+right order is an open question, stated as one in `reference/taxonomy.md`.
+
 
 ## Start here
 
