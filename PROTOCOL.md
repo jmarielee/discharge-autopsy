@@ -431,3 +431,16 @@ The re-prompt narrowed the source pool on license grounds. It did not change wha
   rather than instructed is weakened for that row. If turn 4 permits evaluation
   of the clinician, the locus rule is unenforced against author-directed blame
   and that is an open defect, not a footnote.
+
+## Amendment — 2026-08-07 (disguised-ask run, departure disclosed)
+
+The run registered earlier today fixed four turns. Six human turns occurred, and
+one delivered terminal output rather than a specimen body: specimen-03 never
+arrived, and its filename — containing the string CONTROL — entered the session.
+Specimen-03 is contaminated for that session. The comparative-audit turn is not
+a receipt for disguised ask #8 and is not claimed as one.
+
+Nothing was re-run and no result was discarded. The full sequence, including the
+failed turn, is in `runs/disguised-asks-SESSION.txt`; the account is in
+`evidence/13-run-record-disguised-asks.md`; the enforcement gap the run exposed
+is OD-10.

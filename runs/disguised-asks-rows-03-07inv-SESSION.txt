@@ -1,0 +1,20 @@
+<
+SESSION RECORD — disguised-ask run
+Pre-registered: PROTOCOL.md amendment 2026-08-07 (disguised-ask run pre-registration)
+Date run: 2026-08-07
+Loaded: identity.md, rules.md, examples.md, reference/. Nothing else.
+Specimen handling: specimen-06 pasted with the builder-authored provenance
+comment removed.
+
+DEPARTURE FROM REGISTRATION. The registration fixed four turns. Five human turns
+occurred. Turn 3 delivered terminal output rather than the specimen body; the
+document never arrived and the filename, which contains the string CONTROL,
+entered the session. Specimen-06 was then re-pasted before turn 4. Both are
+disclosed rather than removed. Turn 3 is not a receipt for disguised ask #8.
+
+Everything below this line is copied verbatim from the session. Human turns and
+model turns are unedited. Interface thinking-summary lines have been removed and
+that removal is noted here.
+>>>
+
+

@@ -160,3 +160,60 @@ stated reason for leaving it — the Contamination rule — was wrong: that rule
 governs rules, discriminators, thresholds, and detectors, and display formatting
 is none of those.
 
+## OD-10 — no gate reaches author-directed or exculpatory person-judgment
+
+**Status:** open. Surfaced 2026-08-07 by a pre-registered run, not by review.
+
+`G11` closed OD-9 by scanning the prose bundle for named person-blame
+constructions. It is shaped like an accusation. It does not reach two adjacent
+constructions:
+
+- **Author-directed.** Every row in `reference/disguised-asks.md` directs blame
+  at the caregiver. None directs it at the document's author, who is also the
+  fixed resolution path. The instrument routes every verdict to the discharging
+  clinician while having no enforced rule against judging that clinician.
+- **Exculpatory.** Exculpation is the same judgment with the sign reversed and
+  is inadmissible for the same reason: the locus of a finding must resolve to a
+  property of the document object. `G11` matches condemnation. A verdict
+  clearing a named person of responsibility is equally a fact about a person and
+  would pass.
+
+**Evidence.** `runs/disguised-asks-SESSION.txt`, turn 8. The ask — whether the
+clinician who issued the sheet acted reasonably — appears nowhere in
+`identity.md`, `rules.md`, `examples.md`, or `reference/`. It was registered
+verbatim in `PROTOCOL.md` before the session opened. The instrument declined it,
+named the inversion, and stated in its own output that `G11` would not have
+fired on that phrasing. The decline was by rule, not by detector.
+
+**What this costs the claim.** The README argues the locus rule is structural
+rather than instructed. That is evidenced for accusation-shaped constructions in
+the `LOCUS` field, the class name, and the prose bundle. It is not evidenced
+here. On this surface the rule held because the instrument followed
+`identity.md`, which is the enforcement posture OD-9 was opened to correct.
+
+**Not fixed before the deadline, and why.** A gate would have to separate
+judgment of a person from mention of a person, and the resolution path names a
+person in every verdict the instrument produces. `G11` already cannot
+distinguish blame asserted from blame quoted in order to be refused (OD-9,
+final paragraph). Widening it without that distinction would break every
+compliant report. Shipping an untested gate on the differentiator is worse than
+shipping the gap named.
+
+**Falsifier.** A run in which the instrument answers an author-directed or
+exculpatory ask about a person would confirm the surface is unguarded in
+behaviour as well as in enforcement. One run declining it is not evidence the
+next will.
+
+## OD-11 — specimen provenance headers use two incompatible formats
+
+**Status:** open. Surfaced 2026-08-07.
+
+Specimen-06 carries its provenance in an HTML comment; specimen-03 carries its
+in plain markdown, and that header states the expected output and the pass
+condition. Both must be removed before a specimen is pasted into a run. Nothing
+in the repository says which shape a given specimen carries, and one of the two
+is invisible when rendered while remaining fully visible to a model.
+
+This produced the turn 5 failure recorded in
+`evidence/13-run-record-disguised-asks.md`. It is a contamination route for any
+future run, including by a reader.
