@@ -89,7 +89,7 @@ Full output: `runs/specimen-06-threshold-absence.txt`.
 
 **17 of 17 anchors verified verbatim against the source. Zero fabricated.**
 
-Checked by script (`check-anchors.py`), whitespace flattened and smart punctuation
+Checked by script (`tools/check-anchors.py`), whitespace flattened and smart punctuation
 normalised, as with specimens 04, 05, and 01. G1 has never run on a live output because
 `verify.py` ingests JSON and the model returns text; see OD-7. This is the largest anchor
 set any live run has produced and the first in a procedure class the taxonomy was not

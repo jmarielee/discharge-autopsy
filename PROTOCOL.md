@@ -444,3 +444,32 @@ Nothing was re-run and no result was discarded. The full sequence, including the
 failed turn, is in `runs/disguised-asks-SESSION.txt`; the account is in
 `evidence/13-run-record-disguised-asks.md`; the enforcement gap the run exposed
 is OD-10.
+
+## Amendment — 2026-08-07 (specimen-06 annotation was false)
+
+- **The pre-registration asserted a taxonomy fact that is wrong.** The specimen-06
+  pre-registration above states: "`ACTION_DIVERGENCE` requires two documents
+  assigning opposite actions to the same finding and is therefore structurally
+  unreachable here." `reference/taxonomy.md` defines the class as two *instructions*
+  in the artifact set, not two documents. A single handout can satisfy it. The
+  sentence stands unedited above; it was wrong when written.
+
+- **The instrument caught it before the builder did.** In the `evidence/12` run the
+  annotation was in the model's input. The model disputed it on the schema's own
+  wording, tested the class anyway, anchored a candidate, and eliminated it on the
+  class definition. In the `evidence/13` run the same specimen was pasted with the
+  annotation removed and `ACTION_DIVERGENCE` was the primary. The two runs differ in
+  that one variable and land a tier apart.
+
+- **What this costs.** The `evidence/12` elimination cannot be read as independent,
+  which that record already states. Nothing else in the repository rests on the
+  annotation: it changed no taxonomy class, tier, threshold, or tie-break, and it was
+  never a rule.
+
+- **The false sentence is still live in the specimen file.** The header comment in
+  `specimens/specimen-06-va-bariatric-soft-diet.md` carries the same claim. Under the
+  Preservation rule the specimen ships as run, so the header is not edited. It is a
+  contamination route for any future run and is recorded as one in OD-11.
+
+- No rule, discriminator, threshold, detector, taxonomy class, tier, or tie-break was
+  altered by this amendment.

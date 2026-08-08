@@ -19,7 +19,8 @@ builder-authored labels (OD-5).
 
 **Turn 2 — verdict on specimen-06.** `ACTION_DIVERGENCE`, P1,
 `internal_consistency`. Fifteen quoted spans, all verbatim substrings of the
-specimen. It excluded a candidate `FIELD_INCOMPLETENESS` (P6) under Rule 1
+specimen — verified by `tools/check-anchors-session.py`, which also tests the two
+absence claims the P4 elimination rests on. 17/17. It excluded a candidate `FIELD_INCOMPLETENESS` (P6) under Rule 1
 because degraded column structure left present-but-empty indistinguishable from
 absent, and it declined to diagnose two properties — `arithmetic_demand` and
 `schedule_feasibility` — because the taxonomy has no class for them. Both are

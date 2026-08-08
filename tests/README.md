@@ -1,6 +1,6 @@
 # Fixtures
 
-Ten negative fixtures, one per gate. Each is the passing diagnosis with exactly one
+Eleven negative fixtures, one per gate. Each is the passing diagnosis with exactly one
 thing changed, and each declares in `_expect.blocked_by` which gate should stop it.
 `python3 verify.py --test` runs all of them and then asserts that **every gate has at
 least one negative fixture**, so no gate ships unverified.
@@ -17,8 +17,9 @@ least one negative fixture**, so no gate ships unverified.
 | `negative-G8-model-chosen-tier` | A tier asserted rather than computed |
 | `negative-G9-clinical-judgment` | A dose judgment — out of scope by identity |
 | `negative-G10-unfalsifiable` | A falsifier too vague to satisfy |
+| `negative-G11-person-blame` | A person named as the cause in CHAIN — the locus rule, in prose |
 
-Two fixtures declare `allow_collateral`: they trip a second gate as well, because the
+Three fixtures declare `allow_collateral`: they trip a second gate as well, because the
 failure they stage genuinely carries two problems. That is recorded rather than
 engineered away.
 

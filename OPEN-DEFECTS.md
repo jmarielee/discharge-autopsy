@@ -31,6 +31,10 @@ every form a fix can take.
 
 ## OD-3 — `--test` misreports the outcome of its own negative fixtures
 
+**Status:** superseded 2026-08-07. See the supersession entry below OD-9.
+
+Original entry, left as written:
+
 **Status:** open, cosmetic, not fixed.
 
 The self-test summary prints each negative fixture's `result` field, which a
@@ -47,28 +51,49 @@ The builder's own defect record is not blind, disclosed in the 2026-08-04
 close it: a delivery failure meant the instrument's primary finding was never put
 to the practitioner under blind conditions.
 
-## OD-5 — no uncontaminated blind run has produced a primary defect
+## OD-5 — no verdict has an independent key
 
-**Status:** narrowed three times. Not closed.
+**Status:** narrowed four times. Not closed. The defect this entry names has
+changed as the runs accumulated; the original heading and its successive
+narrowings are kept below so the movement is legible.
 
-The JSON files in `runs/` for specimens 01–03 carry builder-authored labels
-transcribed from `evidence/07`. `runs/README.md` once described them as
-model-produced; that was wrong and was corrected 2026-08-06.
+**Originally:** no end-to-end run existed at all. The JSON files in `runs/` for
+specimens 01–03 carry builder-authored labels transcribed from `evidence/07`.
+`runs/README.md` once described them as model-produced; that was wrong and was
+corrected 2026-08-06.
 
-**What has since been exercised.** Three runs on model-generated labels:
+**What has since been exercised.** Five runs on model-generated labels:
 
 - `evidence/09`, specimen-04 — `OUT_OF_SCOPE`. Terminated before candidates.
 - `evidence/11`, specimen-05 — `REFUSAL`. One admissible candidate, no primary.
-- `evidence/10`, specimen-01 — `THRESHOLD_ABSENCE` at P2. A primary, computed
-  from labels the model wrote.
+- `evidence/10`, specimen-01 — `THRESHOLD_ABSENCE` at P2. Open-book:
+  `examples.md` contains a worked diagnosis of specimen-01 by name.
+- `evidence/12`, specimen-06 — `THRESHOLD_ABSENCE` at P2, seventeen anchors
+  verified. Blind and externally selected, but the input carried a
+  builder-authored header asserting that `ACTION_DIVERGENCE` was structurally
+  unreachable.
+- `evidence/13`, specimen-06 turn 2 — `ACTION_DIVERGENCE` at P1, fifteen anchors
+  verified. Same specimen, same loaded instrument, header removed.
 
-**What remains open.** The one run that produced a primary was open-book:
-`examples.md` contains a worked diagnosis of specimen-01, so the model had the
-answer sheet loaded. The two uncontaminated runs both declined to produce a
-primary. No blind run has named a primary defect.
+**The narrowing.** The prior version of this entry stated that no run free of
+both the open-book contamination and the header annotation had named a primary
+defect. `evidence/13` is free of both and named one. That claim is retired.
 
-**Why specimens 01–02 cannot supply one.** For as long as `examples.md` contains
-their worked diagnosis, any run against them is open-book.
+**What the last two runs show, and what they do not.** They differ in one named
+variable and produce results a full tier apart. That is evidence that the
+contamination mattered, and it is recorded as the reason `evidence/12` was
+disclosed before its result rather than after. It is n=1, the builder had seen
+the first result before the second was run, and neither run is a controlled
+experiment. It is not evidence that P1 is the correct reading of specimen-06.
+
+**What remains open, and is the reason this entry stays.** No shipped verdict has
+been checked against an independent answer key. The builder's own key is not
+blind (2026-08-04 evening amendment, OD-4). The practitioner session did not put
+the instrument's primary finding to the practitioner (OD-4). Specimens 01–02
+cannot supply a blind run for as long as `examples.md` contains their worked
+diagnosis. The instrument has now been shown capable of producing an anchored
+primary on a document it had never seen. It has not been shown to produce the
+right one.
 
 ## OD-6 — specimen-03 extraction not produced by a committed script
 
@@ -143,7 +168,7 @@ person-blame constructions. Fixture: `tests/fixtures/negative-G11-person-blame.j
 and its note reads "Reader did not act on the stated follow-up" — and declares
 the collateral rather than suppressing it.
 
-**No shipped result changed.** Both run sets and all eleven prior fixtures return
+**No shipped result changed.** Both run sets and all twelve prior fixtures return
 identical results with `G11` in place. The gate was added after the results were
 fixed and moved none of them.
 

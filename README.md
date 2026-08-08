@@ -66,14 +66,24 @@ choose a confidence level — a report that tries is rejected by gate G3. The ra
 in [`verify.py`](verify.py): it checks every anchor against its source, drops any defect
 whose anchor fails, applies the tier order and tie-breaks, and computes the primary.
 
-`runs/` holds six sets. Two carry builder-authored labels, transcribed from `evidence/07`
-and marked as such. Four are live runs on model-generated labels: an `OUT_OF_SCOPE`, a
-refusal, and two verdicts. Every anchor in all four was verified against its specimen;
-none was fabricated. The most recent is the first on a blind, externally selected
-specimen — a model with no access to this repository chose the document, and seventeen of
-seventeen anchors verified. It named a primary. But its input carried an annotation
-ruling the top tier unreachable, and the earlier verdict was open-book. No run free of
-both has named a primary. That gap is `OPEN-DEFECTS.md`, OD-5.
+`runs/` holds seven sets. Two carry builder-authored labels, transcribed from
+`evidence/07` and marked as such. Five are live runs on model-generated labels: an
+`OUT_OF_SCOPE`, a refusal, and three verdicts. Every anchor in all five was verified
+against its specimen; none was fabricated.
+
+The last two ran on the same blind, externally selected specimen — a model with no access
+to this repository chose the document — and they disagree. The first read a builder-authored
+header stating that the top tier was structurally unreachable. It tested the top tier
+anyway, anchored a candidate, and eliminated it, returning `THRESHOLD_ABSENCE` at P2 on
+seventeen verified anchors. The second was pasted with that header removed. It returned
+`ACTION_DIVERGENCE` at P1 on fifteen verified anchors.
+
+One named variable, one tier of movement. That is a result about contamination, not about
+the taxonomy, and it is n=1: the second run also came after the builder had seen the
+first, and no independent key exists for either. What it does close is the older claim
+that no run free of both the header and the open-book contamination had ever named a
+primary. One has. What stays open is whether the primary it named is correct —
+`OPEN-DEFECTS.md`, OD-5.
 
 The ranking orders by expected harm, not by causal depth. A scope error explains why the
 wrong handout is in the set; the caregiver acts on the contradiction. Whether that is the
@@ -85,20 +95,23 @@ right order is an open question, stated as one in `reference/taxonomy.md`.
 - [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, written 2026-08-01 and committed 2026-08-03 as the repository's first commit, before any specimen was committed
 - [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what is known to be wrong with this repository at submission, including the one that matters most
 - [`evidence/08-practitioner-session.md`](evidence/08-practitioner-session.md) — a practitioner read: the half that was blind, what it could not test, and the coverage gap it walked into
-- [`runs/`](runs/) — six run sets: two builder-authored, four live on model-generated labels
+- [`runs/`](runs/) — seven run sets: two builder-authored, five live on model-generated labels
+- [`evidence/13-run-record-disguised-asks.md`](evidence/13-run-record-disguised-asks.md) — the disguised-ask session: three asks declined, four findings against the build, and the open defect it surfaced
 - [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
 - [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
 - [`reference/taxonomy.md`](reference/taxonomy.md) — the tier table and its ordering principle
 - [`reference/disguised-asks.md`](reference/disguised-asks.md) — the gate table, and what the gates structurally cannot catch
 
-Limits are stated rather than patched. A blind, externally selected specimen has now named a primary defect with every anchor
-verified, but its input carried an annotation ruling the top tier unreachable. No run free
-of both that and the open-book contamination has named one; OD-5 says so. No independent answer key exists for the shipped specimens; the record says so. Five
-document properties have no matching defect class, so defects there are invisible; the
-taxonomy says so. One class of smuggled fix passes every gate; the gate table says so.
-The disguised-ask table catalogues ten asks backed by five mechanical checks; the
-table says so. The eleventh gate was added on the last day, after external review found
-the locus rule unenforced in prose. It changed no shipped result; OD-9 says so.
+Limits are stated rather than patched. No independent answer key exists for any shipped
+specimen, so no verdict here has been confirmed correct by anyone but the instrument;
+OD-5 says so. Five document properties have no matching defect class, so defects there
+are invisible; the taxonomy says so. One class of smuggled fix passes every gate; the
+gate table says so. The disguised-ask table catalogues ten asks backed by five mechanical
+checks, and the session shipped a receipt for one row; the table says so. The eleventh
+gate was added on the last day, after external review found the locus rule unenforced in
+prose. It changed no shipped result; OD-9 says so. That gate is shaped like an accusation
+and reaches neither author-directed nor exculpatory judgment of a person; OD-10 says so,
+and OD-10 was found by a run rather than by review.
 
 ```
 identity.md  rules.md  examples.md  reference/   ← the diagnostician
