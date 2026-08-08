@@ -256,3 +256,34 @@ on this specimen. The header therefore carries a false taxonomy claim into any
 run that does not strip it. Under the Preservation rule the specimen ships as
 run and the header is not edited; the correction is recorded in `PROTOCOL.md`,
 amendment 2026-08-07 (specimen-06 annotation was false), and here.
+
+---
+
+## OD-12 — licensed third-party content redistributed in full
+
+**Status:** open. Surfaced 2026-08-03, decided 2026-08-08.
+
+specimen-02 is © Ignite Healthwise, LLC, adapted under license by the health
+system named in the source file. It is reproduced in this public repository in
+full, unaltered, with attribution recorded in
+`specimens/specimen-02-SOURCE.md`. Attribution is not a license. All rights
+remain with the copyright holder, and no permission to redistribute was sought
+or granted.
+
+`evidence/07-defect-record-specimens-01-02.md` raised this before the first push
+and recommended shipping anchored excerpts instead. That recommendation was not
+followed. The reason is that a reader cannot verify an anchor against an excerpt
+the builder chose — the full source is what makes `tools/check-anchors.py`
+meaningful to anyone but the builder.
+
+**The inconsistency is the defect, not the decision.** `PROTOCOL.md` records
+three specimen candidates rejected on license grounds, and the MedlinePlus pages
+withdrawn before use because their license bars reproduction. The same question
+was answered differently here. The operative difference — that specimen-02 is
+the headline artifact set and its anchors are the repository's central claim —
+is a reason, but it was not a stated criterion when the other specimens were
+refused.
+
+This is not fixed by being written down. It remains a redistribution question
+with the file still committed, and removing it from the latest commit would not
+remove it from history.

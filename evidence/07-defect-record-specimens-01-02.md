@@ -176,12 +176,31 @@ and ranks defects in an authentic artifact — not that these defects are common
 
 ---
 
-## Licensing flag — resolve before push
+## Licensing flag — decision recorded
 
-specimen-02 is licensed third-party content (Ignite Healthwise, LLC, adapted
-under license by Henry Ford Health). Committing the full handout to a public
-repository is a redistribution question independent of de-identification.
+specimen-02 is licensed third-party content (© Ignite Healthwise, LLC, adapted
+under license by the health system named in the source file). Committing the
+full handout to a public repository is a redistribution question independent of
+de-identification.
 
-Recommended: commit short anchored excerpts and a structural description rather
-than the full document, and state the substitution in `PROTOCOL.md`. Confirm
-before pushing specimen-02 in full.
+**The flag as originally written.** This section previously read "resolve before
+push" and recommended committing short anchored excerpts and a structural
+description rather than the full document, with the substitution stated in
+`PROTOCOL.md`. That recommendation was not followed.
+
+**What was decided instead.** The full handout ships unaltered, with attribution
+in `specimens/specimen-02-SOURCE.md` and the licensing status recorded in
+`PROTOCOL.md`. The reason is verification: every anchor in this record is
+checked as a verbatim substring of the source by `tools/check-anchors.py`, and
+an excerpt file cannot be independently verified by a reader — they would be
+checking quotes against quotes the builder selected.
+
+**The standard was applied inconsistently, and that is the defect.**
+`PROTOCOL.md` records the MedlinePlus specimens as withdrawn before use because
+the A.D.A.M./Ebix license bars reproduction. The same redistribution question
+was raised here and answered the other way. Verifiability was weighed against
+redistribution and won; in the MedlinePlus case no run had been performed, so
+nothing was lost by withdrawing. That is a real distinction, but it was not the
+stated rule, and the rule as written does not contain it.
+
+Recorded as `OD-12`. Not resolved by being recorded.

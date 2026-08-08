@@ -1,8 +1,9 @@
 # Instruction Set Autopsy
 
-One sheet says a tender bulge is normal, and to treat it with heat for up to ninety days.
-The other says a tender bulge means seek care right away. Both went home in the same
-envelope.
+One sheet says a fluid collection at the surgical site is expected, and to treat
+it with heat and compression for up to ninety days. The other says seek care
+right away if that area becomes tender. Nothing in either one tells a caregiver
+how to tell the two apart.
 
 **Instruction Set Autopsy reads the paperwork a patient is still holding weeks after a
 procedure, and names the one document defect most likely to make a caregiver fail at
