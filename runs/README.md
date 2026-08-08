@@ -1,6 +1,7 @@
 # Runs
 
-Seven run sets, in two kinds.
+Seven run sets, in two kinds. The table below carries an eighth row,
+`gate-coverage`, which is fixture output rather than a run.
 
 **Builder-authored labels.** `specimens-01-02` and `specimen-03-control` are JSON
 candidate sets paired with the text output `verify.py` produced from them. **The

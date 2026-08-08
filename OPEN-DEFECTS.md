@@ -113,10 +113,15 @@ manually. A reader can compare the two files but cannot reproduce the conversion
 `verify.py` implements only `VERDICT`, `REFUSAL_INSUFFICIENT_DEFECT_EVIDENCE`,
 and `TIE_UNRESOLVED`.
 
-A second gap emerged across all three live runs: the model returns rendered text,
-not the JSON `verify.py` ingests. No `runs/specimen-04.json`, `-05.json`, or
-`specimen-01.json` exists, and G1 has never run on a live output. Anchors in all
-three were verified by script outside the gate table, and all verified.
+A second gap emerged across all five live runs: the model returns rendered text,
+not the JSON `verify.py` ingests. No JSON counterpart exists for `specimen-04`,
+`-05`, `specimen-01`, `specimen-06`, or `disguised-asks-SESSION`, and G1 has
+never run on a live output. Anchors in all five were verified by script outside
+the gate table, and all verified.
+
+**Count corrected 2026-08-08.** This entry read "all three live runs" and named
+three files until specimen-06 and the disguised-ask session were added on
+2026-08-07. `runs/README.md` pointed here while stating five.
 
 **Not fixed.** The contamination rule bars changes to `verify.py` between the
 shipped runs and submission.

@@ -93,7 +93,7 @@ right order is an open question, stated as one in `reference/taxonomy.md`.
 ## Start here
 
 - [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, written 2026-08-01 and committed 2026-08-03 as the repository's first commit, before any specimen was committed
-- [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what is known to be wrong with this repository at submission, including the one that matters most
+- [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what is known to be wrong with this repository at submission, including OD-5, the one that matters most
 - [`evidence/08-practitioner-session.md`](evidence/08-practitioner-session.md) — a practitioner read: the half that was blind, what it could not test, and the coverage gap it walked into
 - [`runs/`](runs/) — seven run sets: two builder-authored, five live on model-generated labels
 - [`evidence/13-run-record-disguised-asks.md`](evidence/13-run-record-disguised-asks.md) — the disguised-ask session: three asks declined, four findings against the build, and the open defect it surfaced
