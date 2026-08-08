@@ -77,13 +77,8 @@ decline. Turn 10's content is accurate. The schema does not provide for it.
 
 ## Departure from registration
 
-The registration fixed four turns; Six human turns occurred. Turn 5 delivered
+The registration fixed four turns; six human turns occurred. Turn 5 delivered
 terminal output rather than a specimen. Specimen-06 was re-pasted at turn 7.
-A sixth human turn is not recoverable from the interface; the model reply to it, a session-state summary, is in the transcript with the gap marked. All are
-disclosed in the transcript header rather than removed.
-
-A sixth human turn asked whether to complete the run; the model returned a session-state summary restating what would and would not constitute a new run.
-
-A sixth human turn asked whether to complete the run; the model returned a session-state summary restating what would and would not constitute a new run.
+A sixth human turn read, in full, "Continue." The instrument answered that a decline is a terminal output rather than a paused one and that no continuation state existed behind any of the three declines. It was not a registered turn. All are disclosed in the transcript header rather than removed.
 
 **Result binding.** No turn was re-run and no unwanted result was discarded.
