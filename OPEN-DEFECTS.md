@@ -119,7 +119,7 @@ not the JSON `verify.py` ingests. No JSON counterpart exists for `specimen-04`,
 never run on a live output. Anchors in all five were verified by script outside
 the gate table, and all verified.
 
-**Count corrected 2026-08-08.** This entry read "all three live runs" and named
+**Count corrected 2026-08-07.** This entry read "all three live runs" and named
 three files until specimen-06 and the disguised-ask session were added on
 2026-08-07. `runs/README.md` pointed here while stating five.
 
