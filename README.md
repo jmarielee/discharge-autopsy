@@ -1,124 +1,145 @@
 # Instruction Set Autopsy
 
-One sheet says the tender bulge is expected — treat it with heat and compression, up to
-ninety days. The other says seek care immediately if that area turns tender. Both went
-home in the same envelope. Nothing in either one tells a caregiver which is which.
+One sheet says a tender bulge is normal, and to treat it with heat for up to ninety days.
+The other says a tender bulge means seek care right away. Both went home in the same
+envelope.
 
-**Instruction Set Autopsy reads the instructions a patient is still holding weeks after a
-procedure — the paperwork from follow-up visits, not the packet from the hospital — and
-names the document defect most likely to cause a caregiver to fail with them.**
+**Instruction Set Autopsy reads the paperwork a patient is still holding weeks after a
+procedure, and names the one document defect most likely to make a caregiver fail at
+home.**
 
 Not how to fix it. Why it failed.
 
-Not the hospital discharge packet — that one is comprehensive, signed, and driven by
-liability. This reads what comes after it and often replaces it in the house: the
-post-visit summary, the handout stapled on, whatever is on the counter three weeks later.
-A registered nurse who read a specimen supplied the mechanism herself: the summary
-is thin *because* the surgeon covered everything in person. Nothing was neglected. But the
-conversation ends at the office door, and the paper is what the caregiver still has at
-11pm.
+## It cannot blame a person
 
-It cannot name a person as the cause, and three separate checks say so: the ranking
-contains no class a person could satisfy (G4), the locus field is a closed enum of
-document properties (G2), and the prose is scanned for named person-blame constructions
-(G11). G11 was added on 2026-08-07 after external review found that the first two guarded
-the fields and left the free text open; the record is OD-9. What G11 cannot catch is
-stated in `reference/disguised-asks.md`.
+When home care goes wrong, the easy explanation is that the patient didn't follow the
+directions. This tool cannot give that answer. Not "won't" — can't.
 
-A model asked to avoid blaming people can be argued into it. A ranking with no
-person-shaped class in it cannot.
+That constraint exists because the easy explanation is usually the wrong question. Look at
+the two sheets above. A caregiver who follows one exactly is violating the other. Nobody
+failed to follow directions. The directions disagreed.
+
+So this tool asks a narrower question: what about the paper made the wrong action look
+correct? Then it stops.
+
+Three checks hold that line, and you can run all three:
+
+- `G2` — the cause must be a document property, from a fixed list
+- `G4` — the list of defect types contains nothing a person could be
+- `G11` — the written explanation is scanned for blame aimed at a person
+
+`G11` was added on the last day, after an outside reviewer found the first two guarded the
+structured fields but left the prose open. It changed no shipped result. The record is
+`OD-9`. What it still misses is in
+[`reference/disguised-asks.md`](reference/disguised-asks.md).
+
+## What it reads
+
+Not the hospital discharge packet. That one is long and signed and written under legal
+pressure, so it tends to be thorough.
+
+This reads what comes after: the visit summary, the handout stapled to it, whatever is on
+the counter three weeks later. Those are written under the opposite pressure. A registered
+nurse who read one of these specimens supplied the mechanism herself — the summary is thin
+*because* the surgeon covered everything in person. Nothing was skipped. But the
+conversation ends at the office door, and the paper is what the caregiver has at 11pm.
+
+She also read specimen-02 blind, not knowing what this tool looks for or that the patient
+had already had the surgery, and concluded it couldn't work as go-home paperwork. She got
+there from what was missing. The tool got there from a scope error. Same conclusion, two
+directions. That was one nurse, one call, one of the two documents — it doesn't prove the
+pattern generalizes, and this repository doesn't claim it does.
+
+## How it works
+
+The model finds candidate defects and quotes the exact words that show each one. It does
+not rank them, pick the primary, or choose a confidence level.
+
+[`verify.py`](verify.py) does that. It checks every quote against the source, drops any
+defect whose quote fails, applies a fixed ranking, picks the primary, and runs eleven gates
+on the result.
+
+**The model labels. The ranking decides.**
 
 ## Verify it in ninety seconds
 
-Python standard library only. No key, no install, no network.
+Python standard library only. No key, no install, no internet.
 
+```bash
+python3 verify.py --test
+python3 verify.py runs/specimen-03-control.json
+python3 verify.py runs/specimens-01-02.json
 ```
-python3 verify.py --test                        # eleven gates, eleven negative fixtures
-python3 verify.py runs/specimen-03-control.json # the control refuses
-python3 verify.py runs/specimens-01-02.json     # the real set: ACTION_DIVERGENCE, P1
-```
 
-**Read the control first.** It carries one known low-tier defect, recorded in the specimen
-header before any run. The instrument refuses rather than advancing it. A diagnostician
-forbidden from blaming a person will invent a document defect to satisfy its own
-constraint unless something stops it; the refusal threshold is that something. If the
-control ever returns a primary defect, the threshold is set wrong.
+Every gate blocked by its own test case, the control refusing, and the real set returning
+`ACTION_DIVERGENCE` at P1.
 
-`--test` runs every fixture and then asserts that **every gate has at least one negative
-fixture**, so no gate ships unverified.
+**Run the control first.** It holds one small known flaw, written into its header before
+any run. A tool forbidden from blaming a person will invent a document defect instead, just
+to have something to say. The minimum bar stops it: two anchored defects, one of them
+serious. The control doesn't clear it, so the tool refuses. If it ever returns a defect
+there, the bar is wrong.
 
 ## Run it
 
-Add `identity.md`, `rules.md`, `examples.md`, and `reference/` to a Claude Project and
-paste in the full set of instruction documents from one encounter.
+Add only these four to a Claude Project, then paste the complete set of instruction documents from one visit into the project.
 
-Add only those files. `evidence/` and `runs/` contain worked diagnoses of the shipped
-specimens, and loading them turns a run into an open-book test.
+```text
+identity.md   rules.md   examples.md   reference/
+```
 
-## The design decision
+Once the documents are in the project, ask Claude to diagnose the instruction set. It will identify candidate document defects; `verify.py` determines which one becomes the primary diagnosis.
 
+Don't add `runs/` or `evidence/`. Those hold finished diagnoses, and loading them turns a fresh run into an open-book test.
 
-**By design: the model labels, the ranking decides.** 
+## What the runs show
 
-The model finds candidate defects
-and anchors each to a verbatim span. It does not rank, does not pick the primary, does not
-choose a confidence level — a report that tries is rejected by gate G3. The ranking lives
-in [`verify.py`](verify.py): it checks every anchor against its source, drops any defect
-whose anchor fails, applies the tier order and tie-breaks, and computes the primary.
+`runs/` holds seven sets. Two use builder-written labels and say so. Five are live runs on
+model-written labels: one out-of-scope decline, one refusal, three verdicts. Every quote in
+all five was checked against its source. None was invented.
 
-`runs/` holds seven sets. Two carry builder-authored labels, transcribed from
-`evidence/07` and marked as such. Five are live runs on model-generated labels: an
-`OUT_OF_SCOPE`, a refusal, and three verdicts. Every anchor in all five was verified
-against its specimen; none was fabricated.
+The last two used the same document, picked by an outside model with no access to this
+repo — and they disagreed. The first saw a builder-written note claiming the top tier was
+impossible here. It tested that tier anyway, found a candidate, ruled it out, and returned
+`THRESHOLD_ABSENCE` at P2. The second got the same document with the note deleted, and
+returned `ACTION_DIVERGENCE` at P1.
 
-The last two ran on the same blind, externally selected specimen — a model with no access
-to this repository chose the document — and they disagree. The first read a builder-authored
-header stating that the top tier was structurally unreachable. It tested the top tier
-anyway, anchored a candidate, and eliminated it, returning `THRESHOLD_ABSENCE` at P2 on
-seventeen verified anchors. The second was pasted with that header removed. It returned
-`ACTION_DIVERGENCE` at P1 on fifteen verified anchors.
+One variable, one tier of movement. That's a finding about contamination, not about the
+ranking. It's also a single case, and the second run came after the builder had seen the
+first. It settles an older worry — that no clean run had ever named a primary. One has.
+Whether that primary is *correct* is still open.
 
-One named variable, one tier of movement. That is a result about contamination, not about
-the taxonomy, and it is n=1: the second run also came after the builder had seen the
-first, and no independent key exists for either. What it does close is the older claim
-that no run free of both the header and the open-book contamination had ever named a
-primary. One has. What stays open is whether the primary it named is correct —
-`OPEN-DEFECTS.md`, OD-5.
+## What is wrong with it
 
-The ranking orders by expected harm, not by causal depth. A scope error explains why the
-wrong handout is in the set; the caregiver acts on the contradiction. Whether that is the
-right order is an open question, stated as one in `reference/taxonomy.md`.
+Recorded, not patched. Full list in [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md).
 
+- **Nobody has confirmed these answers but the tool itself.** No independent answer key
+  exists for any specimen. Biggest one — `OD-5`.
+- **Five document properties have no matching defect type.** Defects there are invisible.
+- **One kind of smuggled fix passes every gate.** The gate table says which.
+- **`G11` only catches accusations.** It misses judgment aimed at the author, and misses a
+  person being let off the hook — `OD-10`, found by a run, not a reviewer.
+- **The ranking sorts by likely harm, not root cause.** A scope error explains how the
+  wrong handout got in the envelope; the caregiver acts on the contradiction. Whether
+  that's the right order is open, and `reference/taxonomy.md` says so.
 
 ## Start here
 
-- [`PROTOCOL.md`](PROTOCOL.md) — pre-registration, written 2026-08-01 and committed 2026-08-03 as the repository's first commit, before any specimen was committed
-- [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what is known to be wrong with this repository at submission, including OD-5, the one that matters most
-- [`evidence/08-practitioner-session.md`](evidence/08-practitioner-session.md) — a practitioner read: the half that was blind, what it could not test, and the coverage gap it walked into
-- [`runs/`](runs/) — seven run sets: two builder-authored, five live on model-generated labels
-- [`evidence/13-run-record-disguised-asks.md`](evidence/13-run-record-disguised-asks.md) — the disguised-ask session: three asks declined, four findings against the build, and the open defect it surfaced
-- [`examples.md`](examples.md) — a verdict, a refusal on the control, a declined disguised ask
-- [`evidence/07-defect-record-specimens-01-02.md`](evidence/07-defect-record-specimens-01-02.md) — the full record for the real artifact set, with anchors, blinding disclosure, and what it cannot support
-- [`reference/taxonomy.md`](reference/taxonomy.md) — the tier table and its ordering principle
-- [`reference/disguised-asks.md`](reference/disguised-asks.md) — the gate table, and what the gates structurally cannot catch
+- [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md) — what's known to be broken
+- [`PROTOCOL.md`](PROTOCOL.md) — the plan, written 2026-08-01 and committed 2026-08-03 as
+  the first commit, before any specimen was added
+- [`examples.md`](examples.md) — a verdict, a refusal, a declined ask
+- [`evidence/13-run-record-disguised-asks.md`](evidence/13-run-record-disguised-asks.md) —
+  a session that tried to trick it: three asks declined, four problems found
+- [`runs/`](runs/) — seven run sets, and what each proves
 
-Limits are stated rather than patched. No independent answer key exists for any shipped
-specimen, so no verdict here has been confirmed correct by anyone but the instrument;
-OD-5 says so. Five document properties have no matching defect class, so defects there
-are invisible; the taxonomy says so. One class of smuggled fix passes every gate; the
-gate table says so. The disguised-ask table catalogues ten asks backed by five mechanical
-checks, and the session shipped a receipt for one row; the table says so. The eleventh
-gate was added on the last day, after external review found the locus rule unenforced in
-prose. It changed no shipped result; OD-9 says so. That gate is shaped like an accusation
-and reaches neither author-directed nor exculpatory judgment of a person; OD-10 says so,
-and OD-10 was found by a run rather than by review.
-
-```
+```text
 identity.md  rules.md  examples.md  reference/   ← the diagnostician
-verify.py    runs/     tests/                    ← the deterministic layer
+verify.py    runs/     tests/                    ← the part that decides
 PROTOCOL.md  specimens/  evidence/               ← the evidence
-background/                                      ← not evidence; exploratory, led witness
-OPEN-DEFECTS.md  docs/                           ← what is wrong, and build documents
+background/                                      ← not evidence; a led witness
+OPEN-DEFECTS.md  docs/                           ← what's wrong, and build notes
 ```
 
-*Built by [Jodi Paige-Lee](https://www.linkedin.com/in/jodipl) for Clief Notes Weekly Competition #10.*
+*Built by [Jodi Paige-Lee](https://www.linkedin.com/in/jodipl) for Clief Notes Weekly
+Competition #10.*
