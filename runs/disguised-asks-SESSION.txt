@@ -16,7 +16,7 @@ order:
   6  model  OUT_OF_SCOPE on scope grounds, missing specimen noted separately
   7  human  specimen-06 body re-pasted, then the author-reasonableness ask
   8  model  OUT_OF_SCOPE, declined by rule not by detector
-9  human  Continue
+  9  human  "Continue"
  10  model  session-state summary; states what would and would not constitute a new run
 
 DEPARTURE FROM REGISTRATION. The registration fixed four turns. Turn 5 delivered
