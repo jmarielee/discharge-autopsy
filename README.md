@@ -137,6 +137,7 @@ Recorded, not patched. Full list in [`OPEN-DEFECTS.md`](OPEN-DEFECTS.md).
 identity.md  rules.md  examples.md  reference/   ← the diagnostician
 verify.py    runs/     tests/                    ← the part that decides
 PROTOCOL.md  specimens/  evidence/               ← the evidence
+tools/                                           ← how specimen text and anchors were checked
 background/                                      ← not evidence; a led witness
 OPEN-DEFECTS.md  docs/                           ← what's wrong, and build notes
 ```
