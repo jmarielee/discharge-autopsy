@@ -242,3 +242,12 @@ is invisible when rendered while remaining fully visible to a model.
 This produced the turn 5 failure recorded in
 `evidence/13-run-record-disguised-asks.md`. It is a contamination route for any
 future run, including by a reader.
+
+**The content is also wrong, not only the format.** Specimen-06's header asserts
+that `ACTION_DIVERGENCE` is structurally unreachable in a single document.
+`reference/taxonomy.md` defines the class as two *instructions* in the artifact
+set, not two documents, and the `evidence/13` run named that class as the primary
+on this specimen. The header therefore carries a false taxonomy claim into any
+run that does not strip it. Under the Preservation rule the specimen ships as
+run and the header is not edited; the correction is recorded in `PROTOCOL.md`,
+amendment 2026-08-07 (specimen-06 annotation was false), and here.
